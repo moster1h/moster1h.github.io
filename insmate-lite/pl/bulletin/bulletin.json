@@ -1,7 +1,7 @@
 {
-	"isShow": true,
+	"isShow": false,
 	"isForce": false,
-	"isUpdate": true,
+	"isUpdate": false,
 	"packageName": "videodownloader.instagram.videosaver",
 	"versionName": "1.5.0R",
 	"latestVersions": "1.5.0R,1.5.05R,1.5.02R,1.5.03R,1.5.04R",
