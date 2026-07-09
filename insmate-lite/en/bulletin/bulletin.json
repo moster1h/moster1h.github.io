@@ -12,6 +12,6 @@
 	<html>
     <h3>The latest version has been released</h3>
     <b>Update Notes:</b><br>
-    <small>Fix the bug causing frequent account logouts.</small><br>
+    <small>Fix the error that prevents downloading.</small><br>
 	</html>"
 }
