@@ -1,378 +1,67 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-
-<head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<!doctype html>
+<html lang="zh-TW" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>Rposty - 服務條款</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="最後更新日期：2023年5月10日， 歡迎來到 Rposty！ 介紹 1.1 Rposty 應用程序（以下統稱為「應用程序」）由 VidTak 開發和運營（以下稱為「VidTak」或「我們」）。。 1.2 個人或企業（以下稱為「您」或「用戶」）在使用或訪問我們的服務之前，應詳細閱讀本服務條款（以下稱為「協議」">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/insmate-pro/tw/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="insmate-pro"
+    data-app-name="Rposty"
+    data-locale="tw"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- 預載器 -->
-
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-    <!-- 主頁部分 -->
-
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Rposty - 服務條款</h2>
-                        <p id="update-time">
-                            <b>最後更新日期：2023年5月10日，</b>
-                            <b>歡迎來到 Rposty！</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>介紹</h2>
-                        <p>1.1 Rposty 應用程序（以下統稱為「應用程序」）由 VidTak 開發和運營（以下稱為「VidTak」或「我們」）。。</p>
-
-                        <p>1.2
-                            個人或企業（以下稱為「您」或「用戶」）在使用或訪問我們的服務之前，應詳細閱讀本服務條款（以下稱為「協議」）。使用我們的服務即表示您已充分理解並接受並願意遵守以下所有條款和條件，本協議即在用戶與
-                            VidTak 之間立即生效。如果您不同意本協議的全部或部分內容，您有權隨時終止我們的服務。</p>
-
-                        <p>如果對本協議有任何疑問，請通過<a href="mailto:legal@vidtak.net">legal@vidtak.net</a> 聯繫我們的法律團隊。</p>
-
-                        <p>1.3 VidTak 有其他協議補充本協議，例如我們的<a href="../privacy_policy.html">隱私政策</a>和<a
-                                href="../cookie_policy.html">Cookie 政策</a>。VidTak
-                            保留隨時修改本協議或相關協議的權利，無需通知，並應立即生效和適用。如果您不同意，您有權停止本協議中約定的服務。一旦我們發布了協議變更，您繼續使用 VidTak
-                            的服務即被視為已完全閱讀、理解並接受變更後的協議，並應遵守此類協議。</p>
-
-                        <p>1.4 我們的服務不適用於13歲以下（或您所在國家使用我們服務的最低法定年齡，以下稱為「兒童」）的人員。兒童不得接受 VidTak
-                            的任何服務，除非由兒童的監護人親自訂購。在這種情況下，監護人應對兒童在服務中的活動負責。</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>用戶帳戶</h2>
-                        <p>
-                            1.1 要在 Rposty 應用程序上使用我們的服務，您需要提供實現該應用程序基本功能所需的最低信息，例如獲取 Cookie、操作系統、唯一設備標識符、登錄 IP
-                            地址、軟件版本、連接方式和網絡類型、設備加速度器（如重力感應設備）、操作日誌和相冊訪問權限。如果您未能保持準確、完整和最新的信息（如信用卡過期），您可能無法使用部分服務。
-                        </p>
-
-                        <p>
-                            您的用戶帳戶使您能夠訪問應用程序和我們可能不時建立和維護的功能，並由我們自行決定。通過連接到我們的應用程序與第三方服務，您授權我們訪問和使用該服務允許的您的信息，並存儲您的登錄憑據。
-                        </p>
-
-                        <p>
-                            VidTak 重視您的個人信息的完整性和安全性。然而，我們不能保證未經授權的第三方永遠無法破壞我們的安全措施或將您的個人信息用於不當目的。您承認您自願提供個人信息並承擔風險。
-                        </p>
-
-                        <p>
-                            1.2
-                            您不得在未經許可的情況下使用其他用戶的帳戶。創建帳戶時，您必須提供準確且完整的信息。您對您的帳戶發生的活動負全部責任，並且必須保持帳戶密碼的安全。我們鼓勵您使用強密碼（使用大小寫字母、數字和符號的組合）來保護您的帳戶。
-                        </p>
-
-                        <p>
-                            您可以通過更改移動應用程序中的設置來控制您的用戶資料以及如何與應用程序交互。通過向 VidTak
-                            提供您的電子郵件地址，您同意我們使用該電子郵件地址向您發送與應用程序相關的通知，包括法律要求的任何通知，代替通過郵件通信。我們還可能使用您的電子郵件地址向您發送其他消息，例如應用程序功能的變更和特別優惠。
-                        </p>
-
-                        <p>
-                            1.3 您同意不參與以下任何禁止活動：(i) 以任何方式復制、分發或披露應用程序的任何部分，包括但不限於任何自動或非自動抓取；(ii)
-                            使用任何自動化系統，包括但不限於機器人、蜘蛛、離線閱讀器等，以使其發送的請求消息數量超過人類在同一時間段內通過使用傳統在線瀏覽器所能合理產生的數量；(iii)
-                            傳送垃圾郵件、連鎖信或其他未經請求的電子郵件；(iv) 試圖干擾、破壞系統完整性或安全性或解碼運行應用程序的服務器的任何傳輸；(v)
-                            採取任何會對我們的基礎設施造成不合理或不成比例的負擔的行為，或由我們自行決定；(vi) 通過應用程序上傳無效數據、病毒、蠕蟲或其他軟件代理；(vii)
-                            收集或收穫應用程序上的任何個人身份信息，包括帳戶名稱；(viii) 未經必要權利和許可使用應用程序進行任何商業目的（如下所述的用戶內容）；(ix)
-                            冒充他人或以其他方式誤導您與某人的關係、進行欺詐、隱藏或試圖隱藏您的身份；(x) 干擾應用程序的正常運行；(xi)
-                            通過應用程序提供的技術或手段以外的任何技術或手段訪問應用程序上的任何內容；或 (xii)
-                            規避我們可能使用的措施來防止或限制訪問應用程序，包括但不限於防止或限制使用或復制任何內容的功能，或強制執行應用程序或其中內容的使用限制。
-                        </p>
-
-                        <p>
-                            1.4
-                            我們可能會在不提前通知的情況下更改應用程序，停止向您提供應用程序或應用程序的功能，或創建應用程序的使用限制。我們可能會永久或暫時終止或暫停您對應用程序的訪問，或刪除任何用戶內容，無需通知且不承擔任何責任，包括但不限於如果我們自行確定您違反了本協議的任何條款，或沒有原因。終止後無論原因與否，您仍然受本協議的約束。
-                        </p>
-                        <p>
-                            1.5
-                            您對您的行為和您通過我們的應用程序提交、發布或展示的任何數據、文本、文件、信息、圖像、照片和視頻剪輯、聲音錄音、音樂作品、旁白、著作、鏈接和其他內容或材料負全部責任。VidTak
-                            對於與您使用我們應用程序有關的行為不承擔任何責任。
-                        </p>
-
-                        <p>
-                            1.6 如果發現您的帳戶或我們的應用程序被他人非法使用，您應立即通知 VidTak 以避免不必要的損失。如果適用法律允許，我們可能但沒有義務(i) 要求您提供身份或其他信息，(ii)
-                            進行檢查以幫助驗證您的身份或背景，(iii) 根據第三方數據庫或其他來源對您進行篩查，並要求服務提供商提供報告，(iv)
-                            從公共記錄中獲取有關刑事定罪或性犯罪者註冊的信息或其當地等效信息。
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>用戶內容</h2>
-                        <p>
-                            1.1 用戶通過應用程序提供、分享、提交、展示或以其他方式創建的任何此類材料均為用戶內容。我們不對您創建的用戶內容主張任何所有權。
-                        </p>
-
-                        <p>
-                            VidTak 有權（但無義務）自行決定刪除通過應用程序存儲的任何用戶內容。如果您認為您的版權作品已被以構成版權侵權的方式復制並位於應用程序上，請通知我們。您必須以書面形式提供以下信息：
-                        </p>
-
-                        <p>
-                            - 授權代表版權所有者行事的人的電子或實物簽名；
-                        </p>
-
-                        <p>- 您聲稱被侵權的版權作品的識別信息；</p>
-
-                        <p>
-                            - 被指控侵權的材料及其在應用程序中的位置的識別信息；
-                        </p>
-
-                        <p>
-                            - 合理足夠的資訊以使 VidTak 能夠與您聯繫，例如您的地址、電話號碼和電子郵件地址；
-                        </p>
-
-                        <p>
-                            - 您真誠相信所投訴的材料的使用未經版權所有者、其代理人或法律授權的聲明；以及
-                        </p>
-
-                        <p>
-                            - 一項聲明，聲明上述信息準確無誤，並且您是版權所有者或獲授權代表版權所有者行事。
-                        </p>
-
-                        <p>上述信息必須提交至以下電子郵件：<a href="mailto:legal@vidtak.net">legal@vidtak.net</a>。</p>
-
-                        <p>
-                            1.2 您同意不發布、存儲、傳輸、創建或分享任何用戶內容：(i) 可能會對您、任何其他人或任何動物造成傷害、損失、身體或精神傷害、情感困擾、死亡、殘疾、毀容或身心疾病的風險；(ii)
-                            可能會對任何人或財產造成任何其他損失或損害的風險；(iii) 試圖通過暴露兒童於不當內容、索要個人識別詳細信息或以其他方式傷害或剝削兒童；(iv) 可能構成或促成犯罪或侵權行為；(v)
-                            包含我們認為非法、有害、虐待、種族或民族攻擊性、誹謗、侵犯個人隱私或公開權利、騷擾、公開或以其他方式羞辱他人的任何信息或內容（公開或私下）、誹謗、威脅、褻瀆或其他令人反感的內容；(vi)
-                            包含任何非法信息或內容（包括但不限於證券法下的內幕信息披露或另一方的商業機密）；或 (vii)
-                            包含任何您無權根據任何法律或根據合同或信託關係提供的信息或內容。您同意您創建、存儲或分享的任何用戶內容不會侵犯任何第三方的任何權利，包括但不限於任何知識產權權利（如下所定義）或隱私權。VidTak
-                            保留拒絕和/或刪除 VidTak 認為違反這些條款的任何用戶內容的權利，但沒有義務這樣做。
-                        </p>
-
-                        <p>
-                            1.3
-                            就本協議而言，知識產權權利指所有專利權、版權權利、掩模作品權利、道德權利、公開權、商標、商業外觀和服務標誌權利、商譽、商業秘密權利和其他現在存在或將來可能存在的知識產權權利，以及所有這些權利的申請、註冊、續展和延展，根據任何州、國家、地區或其他司法管轄區的法律。
-                        </p>
-
-                        <p>1.4 關於您的用戶內容，您確認、聲明並保證如下：</p>
-
-                        <p>
-                            您的用戶內容和您根據本協議和應用程序使用該用戶內容將不會違反任何法律或侵犯任何第三方的任何權利，包括但不限於任何知識產權權利或隱私權。
-                        </p>
-
-                        <p>
-                            在您出於任何商業目的使用我們的應用程序並且您的用戶內容包含任何不是您的原創作品或您不擁有版權的受版權保護材料的情況下，您已獲得在創建和/或傳播該用戶內容時使用該版權材料所需的所有權利、許可、同意和許可。
-                        </p>
-
-                        <p>
-                            1.5 VidTak 可以行使本協議下授予的您的用戶內容權利，而無需支付任何公會費用、殘餘費用、付款、費用或任何集體談判協議或其他方式規定的版稅。VidTak
-                            對您或任何其他用戶或第三方通過應用程序創建、存儲、分享、發布或發送的任何用戶內容不承擔任何責任。您應對您的用戶內容及其發布、發布或分享的後果負全部責任，並同意我們僅作為您的用戶內容在線分發和發布的被動渠道。如果您的內容違反本協議，您可能會對該內容承擔法律責任。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>我們的專有權利</h2>
-                        <p>
-                            1.1 應用程序包含由 VidTak 擁有或許可的材料（以下統稱為「VidTak 的知識產權」）。VidTak 的知識產權可能受版權、商標、專利、商業秘密和其他法律保護，在您和
-                            VidTak 之間，VidTak 擁有並保留 VidTak
-                            的知識產權的所有權利。您不得刪除、更改或隱藏應用程序中或應用程序隨附的任何版權、商標、服務標誌或其他專有權利聲明，也不得複製、修改、改編、創建衍生作品、執行、展示、發布、分發、傳輸、廣播、出售、許可或以其他方式利用應用程序。
-                        </p>
-
-                        <p>
-                            1.2 Rposty 名稱和徽標是 VidTak 的商標，不得全部或部分複製、模仿或使用，除非事先獲得 VidTak 的書面許可。此外，所有頁眉、定製圖形、按鈕圖標和腳本都是
-                            VidTak 的服務標誌、商標和/或商業外觀，不得全部或部分複製、模仿或使用，除非事先獲得 VidTak 的書面許可。
-                        </p>
-
-                        <p>
-                            1.3
-                            您可以選擇或我們可能邀請您提交關於應用程序的評論或想法，包括但不限於改進應用程序的方法（以下統稱為「想法」）。通過提交任何想法，您同意您的披露是免費的、自願的且不受限制的，不會使
-                            VidTak
-                            承擔任何信託或其他義務，並且我們可以在不向您支付任何額外補償的情況下自由使用該想法，和/或以非保密的方式或以其他方式向任何人披露該想法。您進一步承認，通過接受您的提交，VidTak
-                            不會放棄使用 VidTak 以前已知的類似或相關想法，或其員工開發的，或從其他來源獲得的權利。
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>我們的服務</h2>
-                        <p>
-                            1.1 我們將根據本協議向您提供下載服務和其他服務。
-                        </p>
-
-                        <p>
-                            1.2 我們將使用 Google 的相關服務（如 Google Analytics 和 Google Cloud）來分析使用情況並確保遵守其條款和隱私政策。
-                        </p>
-
-                        <p>
-                            未經您和 Google 的授權，我們不會通過 Google 服務收集或處理您的個人信息。欲了解更多信息，您可以參考「Google
-                            如何在您使用我們合作夥伴的網站或應用程序時使用數據」（位於<a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>，或
-                            Google 不時提供的其他 URL）以了解 Google 及其相關組件的隱私政策。
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>費用、支付和發票</h2>
-                        <p>
-                            1.1 除非您通過 Google Play 訂閱會員服務，否則我們不會向您收取使用應用程序的費用。此外，我們將通過在應用程序上發布廣告從 Admob、IronSouce
-                            獲得收益。服務費的費率，請參考應用程序上顯示的價格或發送電子郵件至<a href="mailto:legal@vidtak.net">legal@vidtak.net</a>。
-                        </p>
-
-                        <p>
-                            請注意，除非我們在本協議中有特別約定，否則費用和支付的內容應符合 Google Play 服務條款的要求。
-                        </p>
-
-                        <p>
-                            1.2 我們可能會自行決定不時向某些用戶提供折扣優惠券，這可能導致對相同或類似服務收取不同的費用，您同意，除非我們向您提供，否則此類優惠券不適用於您。
-                        </p>
-
-                        <p>
-                            1.3 訂閱將自動續訂，並且在試用期結束後將根據您選擇的服務收取訂閱費用。您可以隨時在 Google Play 上的訂閱中管理或取消訂閱。欲取消訂閱，請至少在當前訂閱期結束前 24
-                            小時關閉自動續訂。您不會收到當前計費期的退款，除非 Google Play 的退款政策另有規定。
-                        </p>
-
-                        <p>
-                            1.4 請注意，我們保留因您使用我們的服務而導致的任何損害要求額外費用的權利。
-                        </p>
-
-                        <p>
-                            1.5 我們將您的支付賬戶與您的 Google Play 商店個人賬戶相關聯。對於與 VidTak
-                            應用程序相關的賬戶錯誤或未經授權的支付操作（包括但不限於錯誤或未經授權的扣款），Google Payment 應向您直接退款，您應同意授權我們代表您向相應的支付提供商提出退款申請。
-                        </p>
-
-                        <p>
-                            1.6 您可以不時通過應用程序申請發票，發票將發送到您提供的電子郵件地址。如果有任何問題，您應在收取服務費後 48 小時內與我們聯繫。
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>責任限制</h2>
-                        <p>1.1 在適用法律允許的範圍內，我們不對以下事項承擔責任：</p>
-
-                        <p>
-                            - 任何由於我們的疏忽或違反本協議而無法合理預見的損失；
-                        </p>
-
-                        <p>- 與您的業務或任何其他第三方業務有關的任何損失；</p>
-
-                        <p>
-                            - 與您使用我們的服務有關的任何費用、費用、開支、損失、損害或責任。
-                        </p>
-
-                        <p>
-                            1.2 如果我們因與服務有關的原因對您承擔責任，我們的責任將限於您為相應服務支付的服務費總額。
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>爭議解決</h2>
-                        <p>1.1 友好爭議解決</p>
-
-                        <p>用戶可以將任何爭議提交給 VidTak，我們將嘗試友好解決它們。</p>
-
-                        <p>
-                            雖然用戶的法律訴訟權利將始終不受影響，但如果對應用程序或服務的使用有任何爭議，用戶請與本協議中提供的聯繫方式聯繫 VidTak。
-                        </p>
-
-                        <p>
-                            用戶可以向 VidTak 提交投訴，包括簡要描述和（如適用）相關訂單、購買或賬戶的詳細信息，通過<a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>。
-                        </p>
-
-                        <p>我們將在收到投訴後無不當延遲地處理投訴，並在 21 天內回覆。</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>雜項</h2>
-                        <p>
-                            1.1
-                            應用程序可能包含第三方網站或網站鏈接，您應決定是否訪問這些鏈接。我們不對這些網站上提供的任何信息、數據、意見、圖片、聲明或建議的準確性、完整性、充分性和可靠性負責。如果您決定訪問任何與應用程序鏈接的第三方網站，您應自行承擔可能的結果和風險。
-                        </p>
-
-                        <p>
-                            1.2 如果本協議的任何條款被適用法律認為是非法、無效或不可執行的，該條款應在該範圍內被視為不構成本協議的一部分，並且不影響其他條款的合法性、有效性和可執行性。
-                        </p>
-
-                        <p>
-                            1.3 您同意我們可以將本協議全部或部分轉讓或轉讓給我們的子公司或附屬公司或通過合併或收購的繼任者。
-                        </p>
-                        <b>
-                            <p>1.4 免責聲明</p>
-
-                            <p>
-                                服務是「按現狀」和「按可用性」提供的。我們否認所有未在本協議中明確規定的明示、暗示或法定的聲明和保證，包括適銷性、適用於特定用途和非侵權的默示保證。此外，我們不對服務的可靠性、及時性、質量、適用性或可用性或通過使用服務請求的任何服務或商品做出任何聲明、保證或擔保，或保證服務不會中斷或無錯誤。我們不保證第三方提供商的質量、適用性、安全性或能力。您同意，因使用服務而產生的全部風險在適用法律允許的最大範圍內，完全由您承擔。
-                            </p>
-
-                            <p>1.5 責任限制</p>
-
-                            <p>
-                                我們不對因使用服務而直接或間接引起的任何間接、附帶、特殊、懲罰性或後果性損害，包括利潤損失、數據丟失、人身傷害或財產損失承擔責任，即使我們已被告知此類損害的可能性。我們不對因使用或依賴服務或無法訪問或使用服務，或您與任何第三方提供商之間的任何交易或關係引起的任何損害、責任或損失承擔責任，即使我們已被告知此類損害的可能性。我們不對因超出我們合理控制範圍的原因導致的延誤或未履行承擔責任。在任何情況下，我們對您因服務而產生的所有損害、損失和訴訟原因的總責任不得超過我們為相應服務向您收取的服務費。
-                            </p>
-
-                            <p>
-                                本節中的限制和免責聲明不旨在限制適用法律下不可排除的消費者權利或改變您的權利。
-                            </p>
-
-                            <p>1.6 賠償</p>
-
-                            <p>
-                                您承諾在我們提出要求時，賠償我們及我們的高管、董事、員工、司機因您違反或違反本協議，或侵犯任何第三方權利而引起的所有索賠、訴訟、費用、費用、需求、損害、責任、訴訟或判決。
-                            </p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 返回頂部 -->
-
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-    <!-- 腳本 -->
-
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/insmate-lite-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>

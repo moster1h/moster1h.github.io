@@ -1,581 +1,67 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<!doctype html>
+<html lang="id" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>TwiTake - Ketentuan Layanan</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="Pembaruan Terakhir: 10 Mei 2023, Selamat datang di TwiTake! Pendahuluan 1.1 Aplikasi TwiTake (selanjutnya secara kolektif disebut sebagai &quot;Aplikasi&quot;) dikem">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/twitake/in/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="twitake"
+    data-app-name="TwiTake"
+    data-locale="in"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- PRE LOADER -->
-
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-    <!-- Home Section -->
-
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>TwiTake - Ketentuan Layanan</h2>
-                        <p id="update-time">
-                            <b>Pembaruan Terakhir: 10 Mei 2023, </b>
-                            <b>Selamat datang di TwiTake!</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Pendahuluan</h2>
-                        <p>1.1 Aplikasi TwiTake (selanjutnya secara kolektif disebut sebagai "Aplikasi") dikembangkan
-                            dan dioperasikan
-                            oleh VidTak (selanjutnya disebut sebagai "VidTak" "Kami" atau "Kita"). </p>
-
-                        <p>1.2 Individu atau perusahaan (selanjutnya disebut sebagai "Anda" atau "Pengguna") harus
-                            membaca secara menyeluruh dan hati-hati Ketentuan Penggunaan (selanjutnya disebut sebagai
-                            "Perjanjian") sebelum menggunakan atau mengakses Layanan kami. Saat menggunakan Layanan
-                            kami, Anda dianggap telah sepenuhnya memahami dan menerima serta bersedia mematuhi semua
-                            syarat dan ketentuan berikut, dan Perjanjian ini akan berlaku segera antara Pengguna dan
-                            VidTak. Jika Anda tidak setuju dengan Perjanjian ini secara keseluruhan atau sebagian, Anda
-                            berhak untuk menghentikan Layanan kami kapan saja.</p>
-
-                        <p>Setiap pertanyaan tentang Perjanjian ini, silakan hubungi tim hukum kami melalui
-                            <a href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p>1.3 VidTak memiliki perjanjian lain yang melengkapi Perjanjian ini, misalnya <a
-                                href="../privacy_policy.html">Kebijakan Privasi</a> kami dan
-                            <a href="../cookie_policy.html">Kebijakan Cookie</a>
-                            . VidTak berhak untuk mengubah Perjanjian ini atau perjanjian terkait kapan saja tanpa
-                            pemberitahuan, yang akan berlaku dan diterapkan segera. Jika Anda tidak setuju, Anda
-                            memiliki hak untuk menghentikan Layanan yang disepakati di sini. Setelah perubahan pada
-                            perjanjian kami dipublikasikan, Anda terus menggunakan Layanan VidTak dianggap telah
-                            sepenuhnya membaca, memahami, dan menerima perjanjian yang telah diubah, dan harus mematuhi
-                            perjanjian tersebut.
-                        </p>
-
-                        <p>1.4 Layanan kami tidak tersedia untuk digunakan oleh orang di bawah usia 13 tahun (atau usia
-                            minimum legal di negara Anda untuk menggunakan Layanan kami, selanjutnya disebut sebagai
-                            "Anak"). Anak tidak boleh menerima layanan apa pun dari VidTak kecuali layanan tersebut
-                            dipesan oleh wali Anak secara pribadi. Dalam hal ini, wali bertanggung jawab atas aktivitas
-                            Anak pada Layanan.</p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Akun Pengguna</h2>
-                        <p>
-                            1.1 Untuk menggunakan Layanan kami di Aplikasi TwiTake, Anda akan diminta untuk memberikan
-                            informasi minimum yang diperlukan untuk mewujudkan fungsi dasar aplikasi ini, seperti
-                            mendapatkan cookie,
-                            sistem operasi, pengenal unik perangkat, alamat IP login, versi perangkat lunak, metode
-                            koneksi dan jenis jaringan, akselerator perangkat (seperti perangkat penginderaan
-                            gravitasi), log operasi, dan izin akses album. Jika Anda gagal mempertahankan informasi yang
-                            akurat, lengkap, dan terbaru (seperti kartu kredit kedaluwarsa), Anda mungkin tidak dapat
-                            menggunakan sebagian layanan.
-                        </p>
-
-                        <p>
-                            Akun Pengguna Anda memberi Anda akses ke Aplikasi dan fungsionalitas yang dapat kami buat
-                            dan pertahankan dari waktu ke waktu dan atas kebijakan kami sendiri. Dengan terhubung ke
-                            Aplikasi kami dengan layanan pihak ketiga, Anda memberi kami izin untuk mengakses dan
-                            menggunakan informasi Anda dari layanan tersebut sebagaimana diizinkan oleh layanan
-                            tersebut, dan untuk menyimpan kredensial masuk Anda untuk layanan tersebut.
-                        </p>
-
-                        <p>
-                            VidTak peduli tentang integritas dan keamanan informasi pribadi Anda. Namun, kami tidak
-                            dapat menjamin bahwa pihak ketiga yang tidak sah tidak akan pernah dapat mengalahkan
-                            langkah-langkah keamanan kami atau menggunakan informasi pribadi Anda untuk tujuan yang
-                            tidak semestinya. Anda mengakui bahwa Anda memberikan informasi pribadi Anda atas risiko
-                            Anda sendiri.
-                        </p>
-
-                        <p>
-                            1.2 Anda tidak boleh menggunakan akun Pengguna orang lain tanpa izin. Saat membuat akun
-                            Anda, Anda harus memberikan informasi yang akurat dan lengkap. Anda sepenuhnya bertanggung
-                            jawab atas aktivitas yang terjadi pada akun Anda, dan Anda harus menjaga kata sandi akun
-                            Anda tetap aman. Kami mendorong Anda untuk menggunakan kata sandi yang kuat (kata sandi yang
-                            menggunakan kombinasi huruf besar dan kecil, angka, dan simbol) dengan akun Anda.
-                        </p>
-
-                        <p>
-                            Anda dapat mengontrol profil Pengguna Anda dan bagaimana Anda berinteraksi dengan Aplikasi
-                            dengan mengubah pengaturan di aplikasi seluler. Dengan memberikan alamat email Anda kepada
-                            VidTak, Anda menyetujui penggunaan alamat email tersebut untuk mengirimkan pemberitahuan
-                            terkait Aplikasi, termasuk pemberitahuan yang diwajibkan oleh hukum, sebagai pengganti
-                            komunikasi melalui surat pos. Kami juga dapat menggunakan alamat email Anda untuk mengirim
-                            pesan lainnya, seperti perubahan fitur Aplikasi dan penawaran khusus.
-                        </p>
-
-                        <p>
-                            1.3 Anda setuju untuk tidak terlibat dalam aktivitas terlarang berikut: (i) menyalin,
-                            mendistribusikan, atau mengungkapkan bagian mana pun dari Aplikasi dalam media apa pun,
-                            termasuk tanpa batasan dengan pengikisan otomatis atau non-otomatis; (ii) menggunakan sistem
-                            otomatis apa pun, termasuk namun tidak terbatas pada robot, spider, pembaca offline, dll.,
-                            untuk mengakses Aplikasi dengan cara yang mengirim lebih banyak pesan permintaan ke server
-                            VidTak daripada yang dapat dihasilkan manusia dalam periode waktu yang sama menggunakan
-                            browser web online konvensional; (iii) mengirimkan spam, surat berantai, atau email yang
-                            tidak diminta lainnya; (iv) mencoba mengganggu, mengkompromikan integritas atau keamanan
-                            sistem atau memecahkan kode transmisi apa pun ke atau dari server yang menjalankan Aplikasi;
-                            (v) mengambil tindakan apa pun yang membebani, atau mungkin membebani, menurut kebijakan
-                            kami, beban yang tidak wajar atau besar pada infrastruktur kami; (vi) mengunggah data yang
-                            tidak valid, virus, worm, atau agen perangkat lunak lainnya melalui Aplikasi; (vii)
-                            mengumpulkan atau memanen informasi pribadi yang dapat diidentifikasi, termasuk nama akun,
-                            dari Aplikasi; (viii) menggunakan Aplikasi untuk tujuan komersial apa pun tanpa memiliki
-                            semua hak dan lisensi yang diperlukan untuk Konten Pengguna (sebagaimana didefinisikan di
-                            bawah); (ix) berpura-pura menjadi orang lain atau salah mengartikan afiliasi Anda dengan
-                            orang atau entitas, melakukan penipuan, menyembunyikan atau mencoba menyembunyikan identitas
-                            Anda; (x) mengganggu fungsi yang benar dari Aplikasi; (xi) mengakses konten apa pun di
-                            Aplikasi melalui teknologi atau sarana selain yang disediakan oleh Aplikasi; atau (xii)
-                            melewati tindakan yang kami gunakan untuk mencegah atau membatasi akses ke Aplikasi,
-                            termasuk tanpa batasan fitur yang mencegah atau membatasi penggunaan atau penyalinan konten
-                            apa pun atau menegakkan batasan penggunaan Aplikasi atau konten di dalamnya.
-                        </p>
-
-                        <p>
-                            1.4 Kami dapat, tanpa pemberitahuan sebelumnya, mengubah Aplikasi, menghentikan penyediaan
-                            Aplikasi atau fitur Aplikasi kepada Anda atau membuat batasan penggunaan untuk Aplikasi.
-                            Kami dapat secara permanen atau sementara menghentikan atau menangguhkan akses Anda ke
-                            Aplikasi, atau menghapus Konten Pengguna apa pun, tanpa pemberitahuan dan tanggung jawab
-                            untuk alasan apa pun, termasuk jika menurut kebijakan kami, Anda melanggar ketentuan
-                            Perjanjian ini, atau tanpa alasan. Setelah penghentian untuk alasan apa pun atau tanpa
-                            alasan, Anda terus terikat oleh Perjanjian ini.
-                        </p>
-                        <p>
-
-                            1.5 Anda sepenuhnya bertanggung jawab atas perilaku Anda dan data, teks, file, informasi,
-                            gambar, foto dan klip video, rekaman suara, karya musik, narasi, karya cipta, tautan, dan
-                            konten atau materi lain yang Anda kirimkan, posting, atau tampilkan di atau melalui Aplikasi
-                            kami. VidTak tidak memiliki kewajiban atas perilaku sehubungan dengan penggunaan Aplikasi
-                            kami oleh Anda.
-                        </p>
-
-                        <p>
-                            1.6 Jika ditemukan bahwa akun Anda atau Aplikasi kami telah digunakan secara ilegal oleh
-                            orang lain, Anda harus segera memberi tahu VidTak untuk menghindari kerugian yang tidak
-                            perlu. Jika dan sebagaimana diizinkan oleh hukum yang berlaku, kami dapat, namun tidak
-                            berkewajiban untuk (i) meminta Anda untuk memberikan identifikasi atau informasi lainnya,
-                            (ii) melakukan pemeriksaan yang dirancang untuk membantu memverifikasi identitas atau latar
-                            belakang Anda, (iii) menyaring Anda terhadap basis data pihak ketiga atau sumber lain dan
-                            meminta laporan dari penyedia layanan, dan (iv) memperoleh laporan dari catatan publik
-                            mengenai hukuman pidana atau pendaftaran pelanggar seks atau setara lokalnya.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Konten Pengguna</h2>
-                        <p>
-                            1.1 Materi apa pun yang Anda sediakan, bagikan, kirimkan, tampilkan, atau buat menggunakan
-                            Aplikasi, adalah Konten Pengguna. Kami tidak mengklaim hak kepemilikan atas Konten Pengguna
-                            yang Anda buat.
-                        </p>
-
-                        <p>
-                            VidTak memiliki hak (tetapi bukan kewajiban) atas kebijakannya sendiri untuk menghapus
-                            Konten Pengguna yang disimpan melalui Aplikasi. Jika Anda percaya bahwa karya berhak cipta
-                            Anda telah disalin dengan cara yang merupakan pelanggaran hak cipta dan berada di Aplikasi,
-                            harap beri tahu kami. Dan Anda harus memberikan informasi berikut secara tertulis:
-                        </p>
-
-                        <p>
-                            - Tanda tangan elektronik atau fisik dari orang yang berwenang bertindak atas nama pemilik
-                            hak cipta;
-                        </p>
-
-                        <p>- Identifikasi karya berhak cipta yang Anda klaim telah dilanggar;</p>
-
-                        <p>
-                            - Identifikasi materi yang diklaim melanggar, dan di mana lokasinya di Aplikasi;
-                        </p>
-
-                        <p>
-                            - Informasi yang cukup memadai untuk memungkinkan VidTak menghubungi Anda, seperti alamat,
-                            nomor telepon, dan alamat email Anda;
-                        </p>
-
-                        <p>
-                            - Pernyataan bahwa Anda memiliki keyakinan itikad baik bahwa penggunaan materi dengan cara
-                            yang diadukan tidak diizinkan oleh pemilik hak cipta, agennya, atau hukum; dan
-                        </p>
-
-                        <p>
-                            - Pernyataan, yang dibuat di bawah sumpah palsu, bahwa informasi di atas akurat, dan bahwa
-                            Anda adalah pemilik hak cipta atau berwenang untuk bertindak atas nama pemilik.
-                        </p>
-
-                        <p>Informasi di atas harus dikirimkan ke Email berikut: <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-
-                        <p>
-                            1.2 Anda setuju untuk tidak memposting, menyimpan, mengirimkan, membuat, atau membagikan
-                            Konten Pengguna apa pun yang: (i) dapat menimbulkan risiko kerugian, kehilangan, cedera
-                            fisik atau mental, stres emosional, kematian, disabilitas, cacat, atau penyakit fisik atau
-                            mental kepada Anda, orang lain, atau hewan mana pun; (ii) dapat menimbulkan risiko kerugian
-                            atau kerusakan lainnya kepada orang atau properti; (iii) berusaha untuk menyakiti atau
-                            mengeksploitasi anak-anak dengan mengekspos mereka ke konten yang tidak pantas, meminta
-                            detail yang dapat diidentifikasi secara pribadi, atau dengan cara lain; (iv) dapat merupakan
-                            atau berkontribusi pada kejahatan atau pelanggaran; (v) mengandung informasi atau konten
-                            yang kami anggap melanggar hukum, berbahaya, melecehkan, bersifat ras atau etnis ofensif,
-                            memfitnah, melanggar, menyerang privasi atau hak publisitas, mengganggu, merendahkan orang
-                            lain (secara publik atau lainnya), mencemarkan nama baik, mengancam, menghujat, atau dengan
-                            cara lain tidak pantas; (vi) mengandung informasi atau konten yang ilegal (termasuk, tanpa
-                            batasan, pengungkapan informasi orang dalam di bawah hukum sekuritas atau rahasia dagang
-                            pihak lain); atau (vii) mengandung informasi atau konten yang Anda tidak memiliki hak untuk
-                            membuat tersedia berdasarkan undang-undang atau berdasarkan hubungan kontrak atau fidusia.
-                            Anda setuju bahwa Konten Pengguna yang Anda buat, simpan, atau bagikan tidak dan tidak akan
-                            melanggar hak pihak ketiga dari jenis apa pun, termasuk tanpa batasan hak Kekayaan
-                            Intelektual (sebagaimana didefinisikan di bawah) atau hak privasi. VidTak berhak, tetapi
-                            tidak berkewajiban, untuk menolak dan/atau menghapus Konten Pengguna yang VidTak yakini,
-                            menurut kebijakannya sendiri, melanggar ketentuan ini.
-                        </p>
-
-                        <p>
-                            1.3 Untuk keperluan Perjanjian ini, Hak Kekayaan Intelektual berarti semua hak paten, hak
-                            cipta, hak kerja topeng, hak moral, hak publisitas, merek dagang, pakaian dagang dan hak
-                            merek layanan, niat baik, hak rahasia dagang, dan hak kekayaan intelektual lainnya yang
-                            mungkin ada sekarang atau di masa depan, dan semua aplikasi untuk itu dan pendaftaran,
-                            pembaruan, dan perpanjangannya, di bawah hukum negara bagian, negara, wilayah, atau
-                            yurisdiksi lainnya.
-                        </p>
-
-                        <p>1.4 Sehubungan dengan Konten Pengguna Anda, Anda menegaskan, menyatakan, dan menjamin hal
-                            berikut:
-                        </p>
-
-                        <p>
-                            Konten Pengguna Anda dan penggunaan Anda sebagaimana dibayangkan oleh Perjanjian ini dan
-                            Aplikasi tidak akan melanggar hukum atau melanggar hak pihak ketiga mana pun, termasuk namun
-                            tidak terbatas pada hak Kekayaan Intelektual atau hak privasi apa pun.
-                        </p>
-
-                        <p>
-                            Sejauh Anda menggunakan Aplikasi kami untuk tujuan komersial dan Konten Pengguna Anda berisi
-                            materi berhak cipta yang bukan karya asli Anda atau yang Anda tidak memiliki hak cipta, Anda
-                            telah memperoleh semua hak, lisensi, persetujuan, dan izin yang diperlukan untuk menggunakan
-                            materi berhak cipta tersebut sehubungan dengan pembuatan dan/atau penyebaran Konten Pengguna
-                            tersebut menggunakan Aplikasi.
-                        </p>
-
-                        <p>
-                            1.5 VidTak dapat melaksanakan hak-hak atas Konten Pengguna Anda yang diberikan berdasarkan
-                            Perjanjian ini tanpa kewajiban membayar biaya guild, sisa pembayaran, pembayaran, biaya,
-                            atau royalti yang harus dibayar berdasarkan perjanjian perundingan bersama atau lainnya.
-                            VidTak tidak bertanggung jawab dan tidak bertanggung jawab atas Konten Pengguna yang Anda
-                            atau Pengguna atau pihak ketiga lainnya buat, simpan, bagikan, posting, atau kirim melalui
-                            Aplikasi. Anda sepenuhnya bertanggung jawab atas Konten Pengguna Anda dan konsekuensi dari
-                            posting, publikasi, atau berbagi konten tersebut dan Anda setuju bahwa kami hanya bertindak
-                            sebagai saluran pasif untuk distribusi dan publikasi online Konten Pengguna Anda. Jika
-                            Konten Anda melanggar Perjanjian ini, Anda mungkin bertanggung jawab secara hukum atas
-                            konten tersebut.
-                        </p>
-
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Hak Milik Kami</h2>
-                        <p>
-                            1.1 Aplikasi mengandung materi yang dimiliki atau dilisensikan oleh VidTak (selanjutnya
-                            secara kolektif disebut sebagai "IP VidTak"). IP VidTak dapat dilindungi oleh hak cipta,
-                            merek dagang, paten, rahasia dagang, dan undang-undang lainnya, dan antara Anda dan VidTak,
-                            VidTak memiliki dan mempertahankan semua hak dalam IP VidTak. Anda tidak akan menghapus,
-                            mengubah, atau menyembunyikan pemberitahuan hak cipta, merek dagang, tanda layanan, atau
-                            pemberitahuan hak milik lainnya yang disertakan dalam atau menyertai Aplikasi dan Anda tidak
-                            akan mereproduksi, memodifikasi, mengadaptasi, menyiapkan karya turunan berdasarkan,
-                            menampilkan, menerbitkan, mendistribusikan, mengirimkan, menyiarkan, menjual, melisensikan
-                            atau dengan cara lain mengeksploitasi Aplikasi.
-                        </p>
-
-                        <p>
-                            1.2 Nama dan logo TwiTake adalah merek dagang dari VidTak, dan tidak boleh disalin, ditiru,
-                            atau digunakan, baik secara keseluruhan atau sebagian, tanpa izin tertulis sebelumnya dari
-                            VidTak. Selain itu, semua tajuk halaman, grafik kustom, ikon tombol, dan skrip adalah tanda
-                            layanan, merek dagang, dan/atau pakaian dagang dari VidTak, dan tidak boleh disalin, ditiru,
-                            atau digunakan, baik secara keseluruhan atau sebagian, tanpa izin tertulis sebelumnya dari
-                            VidTak.
-                        </p>
-
-                        <p>
-                            1.3 Anda dapat memilih untuk atau kami dapat mengundang Anda untuk mengirimkan komentar atau
-                            ide tentang Aplikasi, termasuk namun tidak terbatas pada cara meningkatkan Aplikasi
-                            (selanjutnya secara kolektif disebut sebagai "Ide"). Dengan mengirimkan Ide apa pun, Anda
-                            setuju bahwa pengungkapan Anda adalah gratis, tidak diminta, dan tanpa batasan dan tidak
-                            akan menempatkan VidTak di bawah kewajiban fidusia atau lainnya dan bahwa kami bebas untuk
-                            menggunakan Ide tanpa kompensasi tambahan kepada Anda, dan/atau untuk mengungkapkan Ide
-                            secara non-rahasia atau lainnya kepada siapa pun. Anda lebih lanjut mengakui bahwa, dengan
-                            menerima pengajuan Anda, VidTak tidak melepaskan hak apa pun untuk menggunakan ide serupa
-                            atau terkait yang sebelumnya diketahui VidTak, atau dikembangkan oleh karyawannya, atau
-                            diperoleh dari sumber selain Anda.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Layanan Kami</h2>
-                        <p>
-                            1.1 Kami akan menyediakan layanan unduhan dan layanan lainnya sesuai dengan Perjanjian ini.
-                        </p>
-
-                        <p>
-                            1.2 Kami akan menggunakan layanan terkait Google (seperti Google Analytics dan Google Cloud)
-                            untuk menganalisis penggunaan dan memastikan kepatuhan dengan ketentuan dan kebijakan
-                            privasi mereka.
-                        </p>
-
-                        <p>
-                            Tanpa otorisasi Anda dan Google, kami tidak akan mengumpulkan atau memproses informasi
-                            pribadi Anda melalui layanan Google. Untuk informasi lebih lanjut, Anda dapat merujuk ke
-                            "Bagaimana Google menggunakan data ketika Anda menggunakan situs atau aplikasi mitra kami"
-                            (terletak di
-                            <a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>,
-                            atau URL lain yang mungkin disediakan Google dari waktu ke waktu) untuk memahami kebijakan
-                            privasi Google dan komponennya yang terkait.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Biaya, Pembayaran, dan Faktur</h2>
-                        <p>
-                            1.1 Kami TIDAK mengenakan biaya untuk menggunakan Aplikasi kecuali Anda berlangganan layanan
-                            anggota melalui Google Play. Selain itu, kami akan mendapatkan manfaat dari Admob, IronSouce
-                            dengan mempublikasikan iklan di Aplikasi kami. Untuk tarif biaya layanan, silakan merujuk ke
-                            harga yang ditampilkan di Aplikasi atau kirim email ke
-                            <a href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p>
-                            HARAP DICATAT BAHWA, kecuali kami memiliki perjanjian khusus dalam Perjanjian ini, konten
-                            biaya dan pembayaran harus sesuai dengan ketentuan Google Play Terms of Service.
-                        </p>
-
-                        <p>
-                            1.2 Kami dapat, atas kebijakan kami sendiri, menawarkan kupon diskon tertentu kepada
-                            pengguna dari waktu ke waktu, yang dapat mengakibatkan jumlah yang berbeda dikenakan untuk
-                            layanan yang sama atau serupa, dan Anda setuju bahwa kupon tersebut tidak berlaku untuk Anda
-                            kecuali kami telah menyediakan kupon tersebut kepada Anda.
-                        </p>
-
-                        <p>
-                            1.3 Langganan akan diperpanjang secara otomatis dan biaya langganan akan dikenakan sesuai
-                            dengan layanan yang Anda pilih setelah masa percobaan kecuali dibatalkan. Anda dapat
-                            mengelola atau membatalkan langganan Anda kapan saja di Langganan di Google Play. Untuk
-                            pembatalan langganan, harap matikan perpanjangan otomatis setidaknya 24 jam sebelum periode
-                            langganan saat ini berakhir. Anda tidak akan menerima pengembalian uang untuk periode
-                            penagihan saat ini, kecuali sebagaimana ditentukan dalam Kebijakan Pengembalian Dana Google
-                            Play.
-                        </p>
-
-                        <p>
-                            1.4 HARAP DICATAT BAHWA kami berhak meminta biaya tambahan yang timbul dari kerusakan apa
-                            pun yang disebabkan oleh penggunaan Layanan kami oleh Anda.
-                        </p>
-
-                        <p>
-                            1.5 Kami menghubungkan akun pembayaran Anda ke akun pribadi Anda di Google Play Store. Untuk
-                            operasi pembayaran yang salah atau tidak sah (termasuk namun tidak terbatas pada potongan
-                            yang salah atau tidak sah) dari akun Anda yang terkait dengan Aplikasi VidTak, Pembayaran
-                            Google harus melakukan pengembalian dana langsung kepada Anda, dan Anda harus setuju untuk
-                            memberi kami wewenang untuk mengajukan klaim pengembalian dana kepada penyedia pembayaran
-                            terkait atas nama Anda.
-                        </p>
-
-                        <p>
-                            1.6 Anda dapat mengajukan permohonan faktur pembayaran yang telah Anda lakukan untuk layanan
-                            tambahan kami melalui Aplikasi dari waktu ke waktu, dan kami akan mengeluarkan faktur yang
-                            sesuai ke alamat email yang Anda berikan. Jika Anda memiliki pertanyaan, Anda harus
-                            menghubungi kami dalam waktu 48 jam setelah layanan yang dikenakan biaya selesai.
-                        </p>
-
-                    </div>
-                </div>
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Pembatasan Tanggung Jawab</h2>
-                        <p>1.1 Sejauh diizinkan oleh hukum yang berlaku, kami tidak bertanggung jawab atas hal-hal
-                            berikut:</p>
-
-                        <p>
-                            - kerugian apa pun yang tidak dapat diperkirakan secara wajar timbul dari kelalaian atau
-                            pelanggaran Perjanjian ini;
-                        </p>
-
-                        <p>- kerugian apa pun yang terkait dengan bisnis Anda atau bisnis pihak ketiga lainnya;</p>
-
-                        <p>
-                            - biaya, biaya, pengeluaran, kerugian, kerusakan, atau kewajiban yang diderita oleh siapa
-                            pun selain Anda sehubungan dengan penggunaan Layanan kami.
-                        </p>
-
-                        <p>
-                            1.2 Dengan ketentuan bahwa kami bertanggung jawab kepada Anda sehubungan dengan Layanan,
-                            tanggung jawab kami akan dibatasi pada jumlah yang sama dengan biaya layanan yang telah Anda
-                            bayarkan untuk Layanan terkait secara keseluruhan.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Penyelesaian Sengketa</h2>
-                        <p>1.1 Penyelesaian sengketa secara damai</p>
-
-                        <p>Pengguna dapat membawa sengketa apa pun kepada VidTak yang akan mencoba menyelesaikannya
-                            secara damai.</p>
-
-                        <p>
-                            Sementara hak Pengguna untuk mengambil tindakan hukum akan tetap tidak terpengaruh, dalam
-                            hal ada kontroversi mengenai penggunaan Aplikasi atau Layanan, Pengguna diminta untuk
-                            menghubungi VidTak di detail kontak yang diberikan dalam Perjanjian ini.
-                        </p>
-
-                        <p>
-                            Pengguna dapat mengajukan keluhan termasuk deskripsi singkat dan jika berlaku, detail dari
-                            pesanan, pembelian, atau akun terkait, kepada VidTaks melalui <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p>Kami akan memproses keluhan tanpa penundaan yang tidak semestinya dan dalam waktu 21 hari
-                            setelah menerimanya.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Lain-lain</h2>
-                        <p>
-                            1.1 Aplikasi dapat berisi situs web pihak ketiga atau tautan situs web, dan Anda harus
-                            memutuskan apakah akan mengakses tautan ini. Kami tidak bertanggung jawab atas keakuratan,
-                            kelengkapan, kecukupan, dan keandalan informasi, data, pendapat, gambar, pernyataan, atau
-                            saran apa pun yang tersedia di situs web ini. Jika Anda memutuskan untuk mengunjungi situs
-                            web pihak ketiga mana pun yang ditautkan ke Aplikasi, Anda sepenuhnya bertanggung jawab atas
-                            kemungkinan hasil dan risikonya.
-                        </p>
-
-                        <p>
-                            1.2 Jika ada ketentuan dalam Perjanjian ini yang dianggap ilegal, tidak sah atau tidak dapat
-                            diberlakukan berdasarkan hukum yang berlaku, ketentuan tersebut sejauh itu akan dianggap
-                            tidak menjadi bagian dari Perjanjian ini, dan tidak akan mempengaruhi legalitas, keabsahan,
-                            dan keberlakuan ketentuan lainnya.
-                        </p>
-
-                        <p>
-                            1.3 Anda setuju bahwa kami dapat menyerahkan atau mengalihkan Perjanjian ini secara
-                            keseluruhan atau sebagian kepada anak perusahaan atau afiliasi kami atau penerus melalui
-                            merger atau akuisisi.
-                        </p>
-                        <b>
-                            <p>1.4 PENAFIAN</p>
-
-                            <p>
-                                LAYANAN DIBERIKAN "SEBAGAIMANA ADANYA" DAN "SEBAGAIMANA TERSEDIA." KAMI MENYANGKAL SEMUA
-                                PERNYATAAN DAN JAMINAN, BAIK TERSURAT, TERSIRAT ATAU BERDASARKAN HUKUM, YANG TIDAK
-                                DINYATAKAN SECARA TEGAS DALAM PERJANJIAN INI, TERMASUK JAMINAN TERSIRAT TENTANG DAPAT
-                                DIPERDAGANGKAN, KESESUAIAN UNTUK TUJUAN TERTENTU, DAN NON-PELANGGARAN. SELAIN ITU, KAMI
-                                TIDAK MEMBUAT PERNYATAAN, JAMINAN, ATAU JAMINAN TERHADAP KEANDALAN, KETEPATAN WAKTU,
-                                KUALITAS, KESESUAIAN, ATAU KETERSEDIAAN LAYANAN ATAU LAYANAN ATAU BARANG APA PUN YANG
-                                DIMINTA MELALUI PENGGUNAAN LAYANAN ATAU BAHWA LAYANAN AKAN TIDAK TERGANGGU ATAU BEBAS
-                                KESALAHAN. KAMI TIDAK MENJAMIN KUALITAS, KESESUAIAN, KEAMANAN, ATAU KEMAMPUAN PENYEDIA
-                                PIHAK KETIGA. ANDA SETUJU BAHWA SELURUH RISIKO YANG TIMBUL DARI PENGGUNAAN LAYANAN OLEH
-                                ANDA SEHUBUNGAN DENGANNYA, TETAP SEPENUHNYA DENGAN ANDA, SEJAUH DIIZINKAN BERDASARKAN
-                                HUKUM YANG BERLAKU.
-                            </p>
-
-                            <p>1.5 BATASAN TANGGUNG JAWAB</p>
-
-                            <p>
-                                KAMI TIDAK BERTANGGUNG JAWAB ATAS KERUGIAN TIDAK LANGSUNG, INSIDENTAL, KHUSUS, CONTOH,
-                                HUKUMAN, ATAU KONSEKUENSIAL, TERMASUK KEHILANGAN KEUNTUNGAN, KEHILANGAN DATA, CEDERA
-                                PRIBADI, ATAU KERUSAKAN PROPERTI YANG TERKAIT DENGAN, DALAM HUBUNGAN DENGAN, ATAU
-                                SEBAGAIMANA YANG DISEBABKAN OLEH PENGGUNAAN LAYANAN, MESKIPUN KAMI TELAH DIPERINGATKAN
-                                TENTANG KEMUNGKINAN KERUGIAN TERSEBUT. KAMI TIDAK BERTANGGUNG JAWAB ATAS KERUGIAN,
-                                TANGGUNG JAWAB, ATAU KEHILANGAN YANG TIMBUL DARI (i) PENGGUNAAN ATAU KEPERCAYAAN ANDA
-                                PADA LAYANAN ATAU KETIDAKMAMPUAN ANDA UNTUK MENGAKSES ATAU MENGGUNAKAN LAYANAN; ATAU
-                                (ii) TRANSAKSI ATAU HUBUNGAN APA PUN ANTARA ANDA DAN PENYEDIA PIHAK KETIGA, MESKIPUN
-                                KAMI TELAH DIPERINGATKAN TENTANG KEMUNGKINAN KERUGIAN TERSEBUT. KAMI TIDAK BERTANGGUNG
-                                JAWAB ATAS PENUNDAAN ATAU KEGAGALAN DALAM KINERJA YANG DIAKIBATKAN DARI PENYEBAB DI LUAR
-                                KENDALI KAMI. DALAM HAL APA PUN TANGGUNG JAWAB KAMI KEPADA ANDA SEHUBUNGAN DENGAN
-                                LAYANAN UNTUK SEMUA KERUGIAN, KEHILANGAN, DAN PENYEBAB TINDAKAN TIDAK AKAN MELEBIHI
-                                BIAYA LAYANAN YANG TELAH KAMI KENAKAN DARI ANDA UNTUK LAYANAN TERKAIT.
-                            </p>
-
-                            <p>
-                                BATASAN DAN PENAFIAN DALAM BAGIAN INI TIDAK BERTUJUAN UNTUK MEMBATASI TANGGUNG JAWAB
-                                ATAU MENGUBAH HAK ANDA SEBAGAI KONSUMEN YANG TIDAK DAPAT DIKECUALIKAN BERDASARKAN HUKUM
-                                YANG BERLAKU.
-                            </p>
-
-                            <p>1.6 GANTI RUGI</p>
-
-                            <p>
-                                ANDA BERJANJI UNTUK MEMBERIKAN GANTI RUGI KEPADA KAMI DAN PEJABAT, DIREKTUR, KARYAWAN,
-                                DAN PENGEMUDI KAMI ATAS SEMUA KLAIM, TINDAKAN, BIAYA, PENGELUARAN, TUNTUTAN, KERUGIAN,
-                                KEWAJIBAN, PROSES ATAU PENILAIAN YANG TIMBUL DARI ATAU SEHUBUNGAN DENGAN PELANGGARAN
-                                ATAU PELANGGARAN ANDA TERHADAP PERJANJIAN INI, ATAU PELANGGARAN ANDA TERHADAP HAK PIHAK
-                                KETIGA.
-                            </p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back top -->
-
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-    <!-- SCRIPTS -->
-
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/twitake-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>

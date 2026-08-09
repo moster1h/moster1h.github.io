@@ -1,381 +1,67 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<!doctype html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>TwiTake - 利用規約</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="最終更新日: 2023年5月10日, InsMateへようこそ！ はじめに 1.1 TwiTake Apps（以下「アプリ」と総称します）は、VidTak（以下「VidTak」または「当社」）によって開発および運営されています。 1.2 個人または企業（以下「ユーザー」または「あなた」といいます）は、サービス">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/twitake/ja/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="twitake"
+    data-app-name="TwiTake"
+    data-locale="ja"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- PRE LOADER -->
-
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-
-
-    <!-- Home Section -->
-
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>TwiTake - 利用規約</h2>
-                        <p id="update-time">
-                            <b>最終更新日: 2023年5月10日, </b>
-                            <b>InsMateへようこそ！</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>はじめに</h2>
-                        <p>1.1 TwiTake
-                            Apps（以下「アプリ」と総称します）は、VidTak（以下「VidTak」または「当社」）によって開発および運営されています。
-                        </p>
-
-                        <p>1.2
-                            個人または企業（以下「ユーザー」または「あなた」といいます）は、サービスを利用する前に、利用規約（以下「本契約」といいます）をよく読み、理解し、同意する必要があります。サービスを利用することで、ユーザーは本契約のすべての条項を理解し、受け入れ、遵守することに同意したものとみなされます。本契約に同意しない場合、いつでもサービスを終了する権利があります。
-                        </p>
-
-                        <p>本契約に関する質問がある場合は、<a href="mailto:legal@vidtak.net">legal@vidtak.net</a>までお問い合わせください。</p>
-
-                        <p>1.3 VidTakには、本契約を補完する他の契約があります。例えば、<a href="../privacy_policy.html">プライバシーポリシー</a>や<a
-                                href="../cookie_policy.html">クッキーポリシー</a>です。VidTakは、予告なしにいつでも本契約や関連契約を変更する権利を有し、変更は直ちに効力を持ち、適用されます。本契約に同意しない場合、サービスを終了する権利があります。当社の契約の変更が公開された後、VidTakのサービスを継続的に使用することで、変更された契約を完全に読み、理解し、受け入れたとみなされ、これらの契約に従うことを意味します。
-                        </p>
-
-                        <p>1.4
-                            サービスは、13歳未満（またはお住まいの国の法定年齢）の方（以下「子供」といいます）には利用できません。子供がVidTakのサービスを利用する場合、保護者の責任の下で行われる必要があります。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>ユーザーアカウント</h2>
-                        <p>
-                            1.1 TwiTake
-                            Appsでサービスを利用するには、アプリの基本機能を実現するために必要な最小限の情報（クッキー、オペレーティングシステム、固有のデバイス識別子、ログインIPアドレス、ソフトウェアバージョン、接続方法およびネットワークタイプ、デバイスアクセラレータ（重力センサーなど）、操作ログ、アルバムアクセス権限など）を提供する必要があります。正確で完全な情報を提供しない場合、一部のサービスを利用できない可能性があります。
-                        </p>
-
-                        <p>
-                            ユーザーアカウントは、当社が随時設置および維持するアプリおよび機能にアクセスするためのものです。第三者サービスと接続することで、そのサービスからの情報にアクセスし、使用する許可を当社に与えることになり、そのサービスのログイン情報を保存します。
-                        </p>
-
-                        <p>
-                            VidTakは、個人情報の完全性とセキュリティを重視していますが、不正な第三者がセキュリティ対策を破り、個人情報を不適切に使用することを完全に防ぐことはできません。個人情報は自己責任で提供してください。
-                        </p>
-
-                        <p>
-                            1.2
-                            他のユーザーのアカウントを無断で使用することはできません。アカウント作成時には、正確で完全な情報を提供する必要があります。アカウントで発生する活動については、ユーザーが責任を負います。アカウントのパスワードは安全に保管し、強力なパスワード（大文字、小文字、数字、記号の組み合わせ）を使用することをお勧めします。
-                        </p>
-
-                        <p>
-                            モバイルアプリの設定を変更することで、ユーザープロファイルやアプリとの対話方法を制御できます。VidTakにメールアドレスを提供することで、アプリに関連する通知（法的通知を含む）をメールで受け取ることに同意したものとみなされます。メールアドレスは、アプリの機能変更や特別オファーの通知にも使用されます。
-                        </p>
-
-                        <p>
-                            1.3
-                            次の禁止行為に従事しないことに同意します：（i）アプリの一部をコピー、配布、開示すること、（ii）ロボット、スパイダー、オフラインリーダーなどの自動システムを使用して、アプリに過度のリクエストメッセージを送信すること、（iii）スパムやチェーンレター、その他の未承諾メールを送信すること、（iv）システムの完全性やセキュリティを侵害しようとすること、（v）インフラに過度の負荷をかける行為、（vi）無効なデータやウイルス、ワームなどのソフトウェアエージェントをアップロードすること、（vii）個人情報を収集すること、（viii）商業目的でアプリを使用すること、（ix）他人になりすますこと、（x）アプリの正常な動作を妨害すること、（xi）アプリの提供する技術以外でコンテンツにアクセスすること、（xii）アクセス制限を回避すること。
-                        </p>
-
-                        <p>
-                            1.4
-                            事前通知なしにアプリを変更したり、アプリやその機能の提供を停止したり、使用制限を設けることがあります。また、違反があった場合、アカウントのアクセスを停止したり、ユーザーコンテンツを削除したりすることがあります。その場合でも本契約に従う必要があります。
-                        </p>
-                        <p>
-
-                            1.5
-                            行動や提出、投稿、表示するデータ、テキスト、ファイル、情報、画像、写真、動画クリップ、音声録音、音楽作品、ナレーション、著作物、リンク、その他のコンテンツや素材について責任を負います。VidTakは、これらの行動に対して責任を負いません。
-                        </p>
-
-                        <p>
-                            1.6
-                            アカウントやアプリが不正使用されている場合は、直ちにVidTakに通知してください。適用法が許す限り、身分証明や情報の提供を求めること、背景調査を行うこと、第三者データベースや他の情報源と照合すること、公的記録から情報を収集することがあります。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>ユーザーコンテンツ</h2>
-                        <p>
-                            1.1 ユーザーが提供、共有、提出、表示、またはアプリを使用して作成する素材はユーザーコンテンツです。当社は、ユーザーコンテンツの所有権を主張しません。
-                        </p>
-
-                        <p>
-                            VidTakは、独自の裁量でアプリに保存されているユーザーコンテンツを削除する権利を有します。著作権侵害の疑いがある場合、次の情報を提供して通知してください。
-                        </p>
-
-                        <p>
-                            - 著作権所有者を代理する権限を持つ者の電子的または物理的な署名。
-                        </p>
-
-                        <p>- 侵害されたと主張する著作物の識別。</p>
-
-                        <p>
-                            - 侵害が主張される素材の識別とそのアプリ内の場所。
-                        </p>
-
-                        <p>
-                            - VidTakが連絡を取るための情報（住所、電話番号、メールアドレスなど）。
-                        </p>
-
-                        <p>
-                            - 素材の使用が著作権所有者、その代理人、または法律によって許可されていないとの誠実な信念の声明。
-                        </p>
-
-                        <p>
-                            - 上記の情報が正確であり、著作権所有者であるか、その代理人として行動する権限があることを宣誓する声明。
-                        </p>
-
-                        <p>上記の情報は、次のメールアドレスに提出してください：<a href="mailto:legal@vidtak.net">legal@vidtak.net</a>。</p>
-
-                        <p>
-                            1.2
-                            次のユーザーコンテンツを投稿、保存、送信、作成、共有しないことに同意します：（i）危害、損失、身体的または精神的損傷、感情的苦痛、死亡、障害、醜状、身体的または精神的病気のリスクを生じさせるもの、（ii）他人や財産への損害のリスクを生じさせるもの、（iii）子供を不適切なコンテンツにさらす、個人情報を求めるなどして子供を害するもの、（iv）犯罪や不法行為に寄与するもの、（v）違法、有害、虐待的、人種的または民族的に攻撃的、中傷的、プライバシーやパブリシティの権利を侵害するもの、（vi）違法な情報やコンテンツを含むもの、（vii）契約上または信託関係で利用可能にする権利がない情報やコンテンツを含むもの。ユーザーコンテンツが第三者の権利を侵害しないことを保証し、VidTakはこれらの規定に違反すると判断した場合、ユーザーコンテンツを拒否または削除する権利を有します。
-                        </p>
-
-                        <p>
-                            1.3
-                            本契約の目的のため、知的財産権は、特許権、著作権、マスクワーク権、人格権、パブリシティ権、商標、商標の形態、サービスマーク権、信用、営業秘密権、およびその他の知的財産権を意味し、これには、現在存在するまたは将来存在する可能性のあるすべての申請、登録、更新、延長が含まれます。
-                        </p>
-
-                        <p>1.4 ユーザーコンテンツに関して、次のことを表明し、保証します。</p>
-
-                        <p>
-                            ユーザーコンテンツおよびその使用が法律を違反せず、第三者の権利を侵害しないこと。
-                        </p>
-
-                        <p>
-                            商業目的でアプリを使用し、ユーザーコンテンツにオリジナル作品でない著作権素材が含まれている場合、その使用に必要なすべての権利、ライセンス、同意、および許可を取得していること。
-                        </p>
-
-                        <p>
-                            1.5
-                            VidTakは、本契約に基づいてユーザーコンテンツに対して権利を行使する際に、支払い義務を負わずに行うことができ、ユーザーコンテンツに対する責任を負いません。ユーザーコンテンツの結果についてはユーザー自身が責任を負い、当社は受動的な役割を果たします。コンテンツが本契約に違反する場合、法的責任を負う可能性があります。
-                        </p>
-
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>当社の所有権</h2>
-                        <p>
-                            1.1
-                            アプリには、VidTakが所有またはライセンスを受けた素材が含まれています（以下「VidTakのIP」と総称します）。VidTakのIPは、著作権、商標、特許、営業秘密、およびその他の法律によって保護されており、VidTakはVidTakのIPに関するすべての権利を所有および保持します。アプリに含まれる著作権、商標、サービスマーク、その他の所有権の通知を削除、変更、隠すことはできません。
-                        </p>
-
-                        <p>
-                            1.2
-                            InsMateの名前とロゴはVidTakの商標であり、VidTakの事前の書面による許可なしに複製、模倣、使用することはできません。さらに、すべてのページヘッダー、カスタムグラフィックス、ボタンアイコン、スクリプトはVidTakのサービスマーク、商標、および商標の形態であり、事前の書面による許可なしに複製、模倣、使用することはできません。
-                        </p>
-
-                        <p>
-                            1.3
-                            アプリに関するコメントやアイデアを提出することができ、提出されたアイデアはVidTakに対する義務を生じさせるものではありません。VidTakは、提出されたアイデアを自由に使用でき、追加の補償は行いません。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>当社のサービス</h2>
-                        <p>
-                            1.1 本契約に従って、ダウンロードサービスおよびその他のサービスを提供します。
-                        </p>
-
-                        <p>
-                            1.2 Googleの関連サービス（Google AnalyticsやGoogle
-                            Cloudなど）を使用して、利用状況を分析し、Googleの利用規約やプライバシーポリシーを遵守します。
-                        </p>
-
-                        <p>
-                            ユーザーおよびGoogleの承認なしに、Googleサービスを通じて個人情報を収集または処理することはありません。詳細については、<a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>でGoogleのプライバシーポリシーを参照してください。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>料金、支払い、および請求書</h2>
-                        <p>
-                            1.1 Google
-                            Playで会員サービスを購読しない限り、アプリの使用料は発生しません。また、広告を掲載することでAdmobやIronSourceから利益を得ます。サービス料の料金については、アプリに表示される価格を参照するか、<a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>までお問い合わせください。
-                        </p>
-
-                        <p>
-                            特別な合意がない限り、料金および支払いの内容はGoogle Playの利用規約に従います。
-                        </p>
-
-                        <p>
-                            1.2
-                            独自の裁量で、特定のユーザーに割引クーポンを提供することがあり、同じまたは類似のサービスに対して異なる金額が請求される場合があります。クーポンが提供されない限り、割引は適用されません。
-                        </p>
-
-                        <p>
-                            1.3 試用期間後、選択したサービスに応じて自動的に購読が更新され、購読料が請求されます。Google
-                            Playでいつでも購読を管理またはキャンセルできます。購読のキャンセルは、現在の購読期間終了の少なくとも24時間前に自動更新をオフにしてください。Google
-                            Playの返金ポリシーに別段の定めがない限り、現在の請求期間に対する返金はありません。
-                        </p>
-
-                        <p>
-                            1.4 サービスの利用による損害について追加料金を請求する権利を留保します。
-                        </p>
-
-                        <p>
-                            1.5 支払いアカウントはGoogle
-                            Playストアの個人アカウントにリンクされています。不正または許可されていない支払い操作（誤ったまたは許可されていない控除など）の場合、Google
-                            Paymentは直接返金を行い、当社に返金請求を代行することに同意するものとします。
-                        </p>
-
-                        <p>
-                            アプリを通じて追加サービスの支払いを行った場合、請求書を申請でき、提供されたメールアドレスに対応する請求書を発行します。質問がある場合は、請求されたサービスが完了した後、48時間以内にご連絡ください。
-                        </p>
-
-                    </div>
-                </div>
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>責任の制限</h2>
-                        <p>1.1 適用法が許す限り、次の場合には責任を負いません：</p>
-
-                        <p>
-                            - 当社の過失や本契約違反によって合理的に予測できない損失。
-                        </p>
-
-                        <p>- あなたのビジネスまたは他の第三者のビジネスに関連する損失。</p>
-
-                        <p>
-                            - サービスの利用に関連して発生する費用、料金、損失、損害、または責任。
-                        </p>
-
-                        <p>
-                            1.2 サービスに関連して責任を負う場合、その責任は、合計で支払ったサービス料の金額に制限されます。
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>紛争解決</h2>
-                        <p>1.1 友好的な紛争解決</p>
-
-                        <p>ユーザーは、紛争をVidTakに持ち込み、友好的に解決を図ります。</p>
-
-                        <p>
-                            ユーザーの法的措置を取る権利は常に影響を受けませんが、アプリやサービスの使用に関する紛争が発生した場合は、本契約に記載された連絡先にVidTakに連絡するようお願いしています。
-                        </p>
-
-                        <p>
-                            ユーザーは、関連する注文、購入、アカウントの詳細を含む苦情を簡単に説明して、<a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>に提出できます。
-                        </p>
-
-                        <p>苦情は、受領後21日以内に遅滞なく処理されます。</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>その他</h2>
-                        <p>
-                            1.1
-                            アプリには、第三者のウェブサイトやウェブサイトリンクが含まれている場合があり、アクセスするかどうかはあなたの判断です。これらのウェブサイトに掲載されている情報、データ、意見、画像、声明、提案の正確性、完全性、適切性、信頼性について責任を負いません。アプリにリンクされた第三者のウェブサイトを訪問する場合、その結果およびリスクについて自己責任で行う必要があります。
-                        </p>
-
-                        <p>
-                            1.2 適用法の下で違法、無効、または執行不能とされる条項は、本契約の一部とは見なされず、他の条項の合法性、有効性、および執行可能性に影響を与えません。
-                        </p>
-
-                        <p>
-                            1.3 本契約を全部または一部、子会社または関連会社、または合併や買収による後継者に譲渡または移転することができます。
-                        </p>
-                        <b>
-                            <p>1.4 免責事項</p>
-
-                            <p>
-                                サービスは「現状有姿」で提供され、「利用可能な状態」で提供されます。本契約に明示的に記載されていない限り、明示的、黙示的、法定のすべての表明および保証（商品性、特定の目的への適合性、非侵害の黙示的保証を含む）が免責されます。さらに、サービスの信頼性、適時性、品質、適合性、利用可能性、サービスの中断やエラーのない提供についても保証しません。第三者プロバイダーの品質、適合性、安全性、能力についても保証しません。サービスの利用に関するリスクは、適用法で許可される最大限の範囲で、あなた自身が負うものとします。
-                            </p>
-
-                            <p>1.5 責任の制限</p>
-
-                            <p>
-                                間接的、付随的、特別、懲罰的、結果的損害（利益の損失、データの損失、個人傷害、財産損害を含む）について責任を負いません。また、サービスの使用や信頼に起因する損害、第三者プロバイダーとの取引関係に起因する損害についても責任を負いません。予見可能な損害についても責任を負いません。サービスに関連して支払われたサービス料の総額を超える責任は負いません。
-                            </p>
-
-                            <p>
-                                このセクションの制限および免責は、適用法で消費者の権利を制限することを意図したものではありません。
-                            </p>
-
-                            <p>1.6 免責</p>
-
-                            <p>
-                                本契約の違反や第三者の権利侵害に起因するすべての請求、行動、費用、損害、責任について、当社およびその役員、取締役、従業員、運転手を免責し、補償することに同意します。
-                            </p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Back top -->
-
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-
-    <!-- SCRIPTS -->
-
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-
-
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/twitake-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>

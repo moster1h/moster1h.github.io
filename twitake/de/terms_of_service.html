@@ -1,606 +1,67 @@
-<!DOCTYPE html>
-<html lang="de">
-
-<head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<!doctype html>
+<html lang="de" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>TwiTake - Nutzungsbedingungen</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-
-    <!-- Haupt CSS -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="Letztes Update: 10. Mai 2023, Willkommen bei TwiTake! Einführung 1.1 TwiTake Apps (im Folgenden zusammenfassend als &quot;Apps&quot; bezeichnet) werden von VidTak (i">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/twitake/de/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="twitake"
+    data-app-name="TwiTake"
+    data-locale="de"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- VORLADER -->
-
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-    <!-- Startseite Sektion -->
-
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>TwiTake - Nutzungsbedingungen</h2>
-                        <p id="update-time">
-                            <b>Letztes Update: 10. Mai 2023, </b>
-                            <b>Willkommen bei TwiTake!</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Einführung</h2>
-                        <p>1.1 TwiTake Apps (im Folgenden zusammenfassend als "Apps" bezeichnet) werden von VidTak (im
-                            Folgenden als "VidTak" "Uns" oder "Wir" bezeichnet) entwickelt und betrieben.
-                        </p>
-
-                        <p>1.2 Einzelpersonen oder Unternehmen (im Folgenden als "Sie" oder "Benutzer" bezeichnet)
-                            sollen die Nutzungsbedingungen (im Folgenden als "Vereinbarung" bezeichnet) sorgfältig und
-                            gründlich lesen, bevor sie unsere Dienste nutzen oder darauf zugreifen. Durch die Nutzung
-                            unserer Dienste gelten Sie als vollständig verstanden und akzeptiert und sind bereit, alle
-                            folgenden Bedingungen und Konditionen einzuhalten, und diese Vereinbarung wird sofort
-                            zwischen den Benutzern und VidTak wirksam. Wenn Sie mit dieser Vereinbarung ganz oder
-                            teilweise nicht einverstanden sind, haben Sie das Recht, unsere Dienste jederzeit zu
-                            beenden.
-                        </p>
-
-                        <p> Bei Fragen zu dieser Vereinbarung kontaktieren Sie bitte unser Rechtsteam über
-                            <a href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p> 1.3 VidTak hat andere Vereinbarungen, die diese Vereinbarung ergänzen, z.B. unsere <a
-                                href="../privacy_policy.html">Datenschutzrichtlinie</a> und
-                            <a href="../cookie_policy.html">Cookie-Richtlinie</a>. VidTak behält sich das
-                            Recht vor, diese Vereinbarung oder verwandte Vereinbarungen jederzeit ohne Ankündigung zu
-                            ändern, die sofort in Kraft tritt und gilt. Wenn Sie nicht einverstanden sind, haben Sie das
-                            Recht, die hier vereinbarten Dienste zu beenden. Sobald die Änderungen unserer
-                            Vereinbarungen
-                            veröffentlicht wurden, gilt Ihre fortgesetzte Nutzung der Dienste von VidTak als
-                            vollständiges
-                            Lesen, Verstehen und Akzeptieren der geänderten Vereinbarungen, und Sie müssen sich an diese
-                            Vereinbarungen halten.
-                        </p>
-
-                        <p> 1.4 Unsere Dienste dürfen von Personen unter 13 Jahren (oder dem in Ihrem Land geltenden
-                            Mindestalter zur Nutzung unserer Dienste, im Folgenden als "Kinder" bezeichnet) nicht
-                            genutzt
-                            werden. Kindern ist es möglicherweise nicht gestattet, Dienste von VidTak zu erhalten, es
-                            sei
-                            denn, die Dienste werden von den Erziehungsberechtigten der Kinder persönlich bestellt. In
-                            diesem Fall ist der Erziehungsberechtigte für die Aktivitäten der Kinder in den Diensten
-                            verantwortlich.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Benutzerkonten</h2>
-                        <p>
-                            1.1 Um unsere Dienste auf TwiTake Apps zu nutzen, müssen Sie die minimalen Informationen
-                            bereitstellen, die erforderlich sind, um die grundlegenden Funktionen dieser App zu
-                            realisieren, wie das Abrufen von Cookies, Betriebssystem, eindeutige Gerätekennung,
-                            Login-IP-Adresse, Softwareversion, Verbindungsart und Art des Netzwerks,
-                            Beschleunigungssensor (wie Schwerkraftsensor), Betriebsprotokoll und
-                            Albumzugriffsberechtigungen. Wenn Sie keine genauen, vollständigen und aktuellen
-                            Informationen (z. B. Kreditkartenablaufdatum) angeben, können Sie möglicherweise keine
-                            Teildienste nutzen.
-                        </p>
-
-                        <p>
-                            Ihr Benutzerkonto gibt Ihnen Zugriff auf die Apps und Funktionen, die wir von Zeit zu Zeit
-                            und nach unserem alleinigen Ermessen einrichten und pflegen. Durch die Verbindung zu unseren
-                            Apps mit einem Drittanbieterdienst erteilen Sie uns die Erlaubnis, Ihre Informationen von
-                            diesem Dienst zu verwenden und zu speichern und Ihre Anmeldedaten für diesen Dienst zu
-                            speichern.
-                        </p>
-
-                        <p>
-                            VidTak kümmert sich um die Integrität und Sicherheit Ihrer persönlichen Daten. Wir können
-                            jedoch nicht garantieren, dass unbefugte Dritte unsere Sicherheitsmaßnahmen niemals umgehen
-                            oder Ihre persönlichen Daten für unangemessene Zwecke verwenden können. Sie erkennen an,
-                            dass Sie Ihre persönlichen Daten auf eigenes Risiko angeben.
-                        </p>
-
-                        <p>
-                            1.2 Sie dürfen niemals das Konto eines anderen Benutzers ohne Erlaubnis verwenden. Bei der
-                            Erstellung Ihres Kontos müssen Sie genaue und vollständige Informationen angeben. Sie sind
-                            allein verantwortlich für die Aktivitäten, die auf Ihrem Konto stattfinden, und Sie müssen
-                            Ihr Kontopasswort sicher aufbewahren. Wir empfehlen Ihnen, starke Passwörter (Passwörter,
-                            die eine Kombination aus Groß- und Kleinbuchstaben, Zahlen und Symbolen verwenden) für Ihr
-                            Konto zu verwenden.
-                        </p>
-
-                        <p>
-                            Sie können Ihr Benutzerprofil und Ihre Interaktionen mit den Apps steuern, indem Sie die
-                            Einstellungen in den mobilen Apps ändern. Durch die Angabe Ihrer E-Mail-Adresse an VidTak
-                            stimmen Sie zu, dass wir die E-Mail-Adresse verwenden, um Ihnen app-bezogene
-                            Benachrichtigungen zu senden, einschließlich aller gesetzlich vorgeschriebenen
-                            Benachrichtigungen anstelle von Mitteilungen per Post. Wir können auch Ihre E-Mail-Adresse
-                            verwenden, um Ihnen andere Nachrichten zu senden, wie z. B. Änderungen an Funktionen der App
-                            und Sonderangebote.
-                        </p>
-
-                        <p>
-                            1.3 Sie stimmen zu, keine der folgenden verbotenen Aktivitäten auszuführen: (i) Kopieren,
-                            Verteilen oder Offenlegen von Teilen der Apps in einem Medium, einschließlich, aber nicht
-                            beschränkt auf automatisiertes oder nicht automatisiertes Scraping; (ii) Verwendung eines
-                            automatisierten Systems, einschließlich, aber nicht beschränkt auf Roboter, Spinnen,
-                            Offline-Leser usw., um auf die Apps in einer Weise zuzugreifen, die mehr
-                            Anforderungsnachrichten an die VidTak-Server sendet, als ein Mensch im gleichen Zeitraum mit
-                            einem herkömmlichen Online-Webbrowser vernünftigerweise erzeugen kann; (iii) Übertragen von
-                            Spam, Kettenbriefen oder anderen unerwünschten E-Mails; (iv) Versuch, die Systemintegrität
-                            oder -sicherheit zu beeinträchtigen oder Übertragungen zu oder von den Servern, die die Apps
-                            betreiben, zu entschlüsseln; (v) Durchführung von Maßnahmen, die nach unserem alleinigen
-                            Ermessen eine unangemessene oder unverhältnismäßig große Last auf unserer Infrastruktur
-                            verursachen; (vi) Hochladen von ungültigen Daten, Viren, Würmern oder anderen
-                            Softwareagenten über die Apps; (vii) Sammeln oder Ernten von persönlich identifizierbaren
-                            Informationen, einschließlich Kontonamen, aus den Apps; (viii) Nutzung der Apps für
-                            kommerzielle Zwecke ohne die erforderlichen Rechte und Lizenzen für die Benutzerinhalte (wie
-                            unten definiert); (ix) sich als eine andere Person ausgeben oder Ihre Zugehörigkeit zu einer
-                            Person oder Entität falsch darstellen, Betrug begehen, Ihre Identität verbergen oder zu
-                            verbergen versuchen; (x) Störung des ordnungsgemäßen Betriebs der Apps; (xi) Zugriff auf
-                            Inhalte in den Apps durch andere Technologien oder Mittel als die von den Apps
-                            bereitgestellten; oder (xii) Umgehung der Maßnahmen, die wir verwenden, um den Zugriff auf
-                            die Apps zu verhindern oder einzuschränken, einschließlich, aber nicht beschränkt auf
-                            Funktionen, die die Nutzung oder das Kopieren von Inhalten verhindern oder einschränken oder
-                            Einschränkungen der Nutzung der Apps oder deren Inhalte durchsetzen.
-                        </p>
-
-                        <p>
-                            1.4 Wir können die Apps ohne vorherige Ankündigung ändern, die Bereitstellung der Apps oder
-                            Funktionen der Apps einstellen, Ihnen oder Nutzungsbeschränkungen für die Apps festlegen.
-                            Wir können Ihren Zugang zu den Apps dauerhaft oder vorübergehend beenden oder aussetzen oder
-                            Benutzerinhalte ohne Ankündigung und Haftung aus beliebigen Gründen löschen, einschließlich,
-                            wenn wir nach unserem alleinigen Ermessen feststellen, dass Sie eine Bestimmung dieser
-                            Vereinbarung verletzen, oder ohne Grund. Nach Beendigung aus irgendeinem Grund oder ohne
-                            Grund sind Sie weiterhin an diese Vereinbarung gebunden.
-                        </p>
-                        <p>
-
-                            1.5 Sie sind allein verantwortlich für Ihr Verhalten und alle Daten, Texte, Dateien,
-                            Informationen, Bilder, Fotos und Videoclips, Tonaufnahmen, Musikwerke, Erzählungen,
-                            urheberrechtlich geschützte Werke, Links und andere Inhalte oder Materialien, die Sie über
-                            unsere Apps einreichen, veröffentlichen oder anzeigen. VidTak haftet nicht für Handlungen in
-                            Bezug auf Ihre Nutzung unserer Apps.
-                        </p>
-
-                        <p>
-                            1.6 Wenn festgestellt wird, dass Ihr Konto oder unsere Apps illegal von anderen verwendet
-                            wurden, müssen Sie VidTak unverzüglich benachrichtigen, um unnötige Verluste zu vermeiden.
-                            Wenn und soweit gesetzlich zulässig, können wir, aber sind nicht verpflichtet (i) Sie
-                            auffordern, einen Identitätsnachweis oder andere Informationen bereitzustellen, (ii)
-                            Überprüfungen durchführen, um Ihre Identität oder Ihren Hintergrund zu überprüfen, (iii) Sie
-                            mit Drittanbieterdatenbanken oder anderen Quellen überprüfen und Berichte von Dienstleistern
-                            anfordern, und (iv) Berichte aus öffentlichen Aufzeichnungen über strafrechtliche
-                            Verurteilungen oder Sexualstraftäterregistrierungen oder deren lokale Äquivalente einholen.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Benutzerinhalte</h2>
-                        <p>
-                            1.1 Alle Materialien, die ein Benutzer bereitstellt, teilt, einreicht, anzeigt oder
-                            anderweitig mit den Apps erstellt, sind Benutzerinhalte. Wir beanspruchen keine
-                            Eigentumsrechte an Benutzerinhalten, die von Ihnen erstellt wurden.
-                        </p>
-
-                        <p>
-                            VidTak hat das Recht (aber nicht die Verpflichtung), nach eigenem Ermessen Benutzerinhalte
-                            zu entfernen, die über die Apps gespeichert sind. Wenn Sie der Meinung sind, dass Ihr
-                            urheberrechtlich geschütztes Werk auf eine Weise kopiert wurde, die eine
-                            Urheberrechtsverletzung darstellt und sich auf den Apps befindet, benachrichtigen Sie uns
-                            bitte. Und Sie müssen die folgenden Informationen schriftlich bereitstellen:
-                        </p>
-
-                        <p>
-                            - Eine elektronische oder physische Unterschrift einer Person, die befugt ist, im Namen des
-                            Urheberrechtsinhabers zu handeln;
-                        </p>
-
-                        <p>- Identifizierung des urheberrechtlich geschützten Werks, das Ihrer Meinung nach verletzt
-                            wurde;
-                        </p>
-
-                        <p>
-                            - Identifizierung des Materials, das angeblich verletzt wurde, und dessen Standort in den
-                            Apps;
-                        </p>
-
-                        <p>
-                            - Informationen, die für VidTak vernünftigerweise ausreichen, um Sie zu kontaktieren, wie
-                            Ihre Adresse, Telefonnummer und E-Mail-Adresse;
-                        </p>
-
-                        <p>
-                            - Eine Erklärung, dass Sie nach Treu und Glauben glauben, dass die Verwendung des Materials
-                            in der beanstandeten Weise nicht vom Urheberrechtsinhaber, seinem Vertreter oder dem Gesetz
-                            autorisiert ist; und
-                        </p>
-
-                        <p>
-                            - Eine Erklärung, die unter Strafe des Meineids abgegeben wurde, dass die oben genannten
-                            Informationen korrekt sind und dass Sie der Urheberrechtsinhaber sind oder befugt sind, im
-                            Namen des Urheberrechtsinhabers zu handeln.
-                        </p>
-
-                        <p>Die oben genannten Informationen müssen an die folgende E-Mail-Adresse gesendet werden: <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p>
-                            1.2 Sie stimmen zu, keine Benutzerinhalte zu veröffentlichen, zu speichern, zu übertragen,
-                            zu erstellen oder zu teilen, die: (i) ein Risiko von Schaden, Verlust, körperlicher oder
-                            geistiger Verletzung, emotionalem Stress, Tod, Behinderung, Entstellung oder körperlicher
-                            oder geistiger Krankheit für Sie, eine andere Person oder ein Tier darstellen können; (ii)
-                            ein Risiko eines anderen Verlusts oder Schadens für eine Person oder ein Eigentum darstellen
-                            können; (iii) versuchen, Kinder zu schädigen oder auszunutzen, indem sie sie unangemessenen
-                            Inhalten aussetzen, nach persönlich identifizierbaren Daten fragen oder anderweitig; (iv)
-                            ein Verbrechen oder eine unerlaubte Handlung darstellen oder dazu beitragen können; (v)
-                            Informationen oder Inhalte enthalten, die wir als rechtswidrig, schädlich, missbräuchlich,
-                            rassistisch oder ethnisch beleidigend, verleumderisch, verletzend, die Privatsphäre oder
-                            Publizitätsrechte verletzend, belästigend, demütigend für andere Menschen (öffentlich oder
-                            anderweitig), diffamierend, bedrohlich, obszön oder anderweitig anstößig ansehen; (vi)
-                            Informationen oder Inhalte enthalten, die illegal sind (einschließlich, ohne Einschränkung,
-                            der Offenlegung von Insiderinformationen gemäß dem Wertpapierrecht oder
-                            Geschäftsgeheimnissen anderer Parteien); oder (vii) Informationen oder Inhalte enthalten,
-                            die Sie nicht rechtmäßig zur Verfügung stellen dürfen, sei es nach einem Gesetz oder
-                            aufgrund von vertraglichen oder treuhänderischen Beziehungen. Sie stimmen zu, dass alle
-                            Benutzerinhalte, die Sie erstellen, speichern oder teilen, keine Rechte Dritter jeglicher
-                            Art verletzen, einschließlich, ohne Einschränkung, geistiges Eigentum (wie unten definiert)
-                            oder Datenschutzrechte. VidTak behält sich das Recht vor, aber ist nicht verpflichtet,
-                            Benutzerinhalte abzulehnen und/oder zu entfernen, die VidTak nach eigenem Ermessen für
-                            rechtswidrig hält.
-                        </p>
-
-                        <p>
-                            1.3 Für die Zwecke dieser Vereinbarung bedeutet geistiges Eigentum alle Patentrechte,
-                            Urheberrechte, Halbleiterschutzrechte, moralische Rechte, Publizitätsrechte, Marken-,
-                            Handelsaufmachungs- und Dienstleistungsmarkenrechte, Geschäftsgeheimnisse und andere
-                            geistige Eigentumsrechte, wie sie jetzt bestehen oder später entstehen können, sowie alle
-                            Anträge darauf und deren Erneuerungen und Erweiterungen nach den Gesetzen eines Staates,
-                            Landes, Territoriums oder einer anderen Gerichtsbarkeit.
-                        </p>
-
-                        <p>1.4 In Bezug auf Ihre Benutzerinhalte bestätigen, vertreten und garantieren Sie Folgendes:
-                        </p>
-
-                        <p>
-                            Ihre Benutzerinhalte und Ihre Nutzung derselben wie in dieser Vereinbarung und den Apps
-                            vorgesehen, werden keine Gesetze verletzen oder Rechte Dritter verletzen, einschließlich,
-                            aber nicht beschränkt auf geistige Eigentumsrechte oder Datenschutzrechte.
-                        </p>
-
-                        <p>
-                            Soweit Sie unsere Apps für kommerzielle Zwecke nutzen und Ihre Benutzerinhalte
-                            urheberrechtlich geschütztes Material enthalten, das nicht Ihr Originalwerk ist oder an dem
-                            Sie nicht anderweitig das Urheberrecht besitzen, haben Sie alle Rechte, Lizenzen,
-                            Zustimmungen und Genehmigungen eingeholt, die erforderlich sind, um dieses urheberrechtlich
-                            geschützte Material im Zusammenhang mit der Erstellung und/oder Verbreitung dieser
-                            Benutzerinhalte mit den Apps zu verwenden.
-                        </p>
-
-                        <p>
-                            1.5 VidTak kann die Rechte an Ihren Benutzerinhalten gemäß dieser Vereinbarung ohne Haftung
-                            für die Zahlung von Gildenhonoraren, Rückständen, Zahlungen, Gebühren oder Lizenzgebühren
-                            ausüben, die nach einer Tarifvereinbarung oder anderweitig fällig sind. VidTak übernimmt
-                            keine Verantwortung und haftet nicht für Benutzerinhalte, die Sie oder andere Benutzer oder
-                            Dritte erstellen, speichern, teilen, veröffentlichen oder senden. Sie sind allein
-                            verantwortlich für Ihre Benutzerinhalte und die Folgen der Veröffentlichung,
-                            Veröffentlichung oder Weitergabe, und Sie stimmen zu, dass wir nur als passiver Kanal für
-                            Ihre Online-Verteilung und Veröffentlichung Ihrer Benutzerinhalte handeln. Wenn Ihre Inhalte
-                            gegen diese Vereinbarung verstoßen, können Sie für diese Inhalte rechtlich verantwortlich
-                            gemacht werden.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Unsere Eigentumsrechte</h2>
-                        <p>
-                            1.1 Die Apps enthalten Material, das von VidTak (im Folgenden zusammenfassend als "VidTaks
-                            IP" bezeichnet) Eigentum oder lizenziert ist. VidTaks IP kann durch Urheberrechte,
-                            Markenrechte, Patentrechte, Geschäftsgeheimnisse und andere Gesetze geschützt sein, und
-                            zwischen Ihnen und VidTak besitzt und behält VidTak alle Rechte an VidTaks IP. Sie werden
-                            keine Urheberrechts-, Marken-, Dienstleistungsmarken- oder andere Eigentumsrechtehinweise,
-                            die in die Apps integriert oder diesen beigefügt sind, entfernen, verändern oder verbergen,
-                            und Sie werden die Apps nicht reproduzieren, modifizieren, anpassen, darauf basierende
-                            abgeleitete Werke erstellen, aufführen, anzeigen, veröffentlichen, verteilen, übertragen,
-                            senden, verkaufen, lizenzieren oder anderweitig verwerten.
-                        </p>
-
-                        <p>
-                            1.2 Der Name und das Logo von TwiTake sind Marken von VidTak und dürfen nicht ohne die
-                            vorherige schriftliche Genehmigung von VidTak kopiert, imitiert oder ganz oder teilweise
-                            verwendet werden. Darüber hinaus sind alle Seitenkopfzeilen, benutzerdefinierten Grafiken,
-                            Schaltflächensymbole und Skripte Dienstleistungsmarken, Marken und/oder Handelsaufmachungen
-                            von VidTak und dürfen nicht ohne vorherige schriftliche Genehmigung von VidTak kopiert,
-                            imitiert oder ganz oder teilweise verwendet werden.
-                        </p>
-
-                        <p>
-                            1.3 Sie können sich entscheiden oder wir können Sie einladen, Kommentare oder Ideen zu den
-                            Apps einzureichen, einschließlich, aber nicht beschränkt auf, wie die Apps verbessert werden
-                            können (im Folgenden zusammenfassend als "Idee" bezeichnet). Durch die Einreichung einer
-                            Idee stimmen Sie zu, dass Ihre Offenlegung freiwillig, unaufgefordert und ohne Einschränkung
-                            erfolgt und VidTak keine treuhänderische oder sonstige Verpflichtung auferlegt und dass wir
-                            die Idee ohne zusätzliche Vergütung für Sie verwenden und/oder die Idee auf nicht
-                            vertraulicher Basis oder anderweitig an Dritte weitergeben können. Sie erkennen ferner an,
-                            dass VidTak durch die Annahme Ihrer Einreichung keine Rechte zur Nutzung ähnlicher oder
-                            verwandter Ideen, die VidTak bereits bekannt sind, von seinen Mitarbeitern entwickelt oder
-                            aus anderen Quellen als Ihnen erhalten hat, aufgibt.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Unsere Dienste</h2>
-                        <p>
-                            1.1 Wir werden Ihnen Download-Dienste und andere Dienste gemäß dieser Vereinbarung
-                            bereitstellen.
-                        </p>
-
-                        <p>
-                            1.2 Wir werden die Dienste von Google (wie Google Analytics und Google Cloud) verwenden, um
-                            die Nutzung zu analysieren und die Einhaltung ihrer Bedingungen und Datenschutzrichtlinien
-                            sicherzustellen.
-                        </p>
-
-                        <p>
-                            Ohne Ihre und die Genehmigung von Google werden wir keine persönlichen Informationen über
-                            die Google-Dienste sammeln oder verarbeiten. Weitere Informationen finden Sie unter "Wie
-                            Google Daten verwendet, wenn Sie die Websites oder Apps unserer Partner nutzen" (unter
-                            <a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>,
-                            oder jede andere URL, die Google von Zeit zu Zeit bereitstellen kann), um die
-                            Datenschutzrichtlinie von Google und dessen verwandten Komponenten zu verstehen.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Gebühren, Zahlung und Rechnung</h2>
-                        <p>
-                            1.1 Wir berechnen Ihnen keine Gebühren für die Nutzung der Apps, es sei denn, Sie abonnieren
-                            über Google Play Mitgliederdienste. Wir werden auch Vorteile von Admob und IronSource durch
-                            das Veröffentlichen von Werbung auf unseren Apps erhalten. Für die Preise der
-                            Dienstleistungsgebühren lesen Sie bitte die in den Apps angezeigten Preise oder senden Sie
-                            eine E-Mail an <a href="mailto:legal@vidtak.net">legal@vidtak.net</a>.
-                        </p>
-
-                        <p>
-                            BITTE BEACHTEN SIE, dass, sofern wir keine besondere Vereinbarung in dieser Vereinbarung
-                            haben, die Gebühren und Zahlungsinhalte gemäß den Anforderungen der Google
-                            Play-Nutzungsbedingungen gelten.
-                        </p>
-
-                        <p>
-                            1.2 Wir können nach unserem alleinigen Ermessen bestimmten Benutzern von Zeit zu Zeit
-                            Rabattgutscheine anbieten, die zu unterschiedlichen Beträgen für die gleichen oder ähnlichen
-                            Dienstleistungen führen können, und Sie stimmen zu, dass solche Gutscheine nicht für Sie
-                            gelten, es sei denn, wir haben Ihnen diese zur Verfügung gestellt.
-                        </p>
-
-                        <p>
-                            1.3 Das Abonnement wird automatisch verlängert und die Abonnementgebühr wird gemäß den von
-                            Ihnen gewählten Diensten nach der Testphase berechnet, es sei denn, es wird storniert. Sie
-                            können Ihr Abonnement jederzeit in den Abonnementeinstellungen auf Google Play verwalten
-                            oder kündigen. Für die Kündigung des Abonnements deaktivieren Sie die automatische
-                            Verlängerung mindestens 24 Stunden im Voraus, bevor der aktuelle Abrechnungszeitraum endet.
-                            Sie erhalten keine Rückerstattung für den aktuellen Abrechnungszeitraum, es sei denn, dies
-                            ist in der Rückerstattungsrichtlinie von Google Play anders vorgesehen.
-                        </p>
-
-                        <p>
-                            1.4 BITTE BEACHTEN SIE, dass wir uns das Recht vorbehalten, zusätzliche Gebühren für Schäden
-                            zu verlangen, die durch Ihre Nutzung unserer Dienste entstehen.
-                        </p>
-
-                        <p>
-                            1.5 Wir verknüpfen Ihr Zahlungskonto mit Ihrem persönlichen Konto im Google Play Store. Für
-                            falsche oder unautorisierte Zahlungsoperationen (einschließlich, aber nicht beschränkt auf
-                            falsche oder unautorisierte Abbuchungen) Ihres Kontos im Zusammenhang mit VidTaks Apps, wird
-                            Google Payment eine direkte Rückerstattung an Sie vornehmen, und Sie stimmen zu, uns zu
-                            autorisieren, eine Rückerstattungsforderung an den entsprechenden Zahlungsanbieter in Ihrem
-                            Namen zu stellen.
-                        </p>
-
-                        <p>
-                            1.6 Sie können von Zeit zu Zeit eine Rechnung für die Zahlung, die Sie für unseren
-                            zusätzlichen Service über die Apps geleistet haben, anfordern, und wir werden die
-                            entsprechende Rechnung an die von Ihnen angegebene E-Mail-Adresse ausstellen. Wenn Sie
-                            Fragen haben, wenden Sie sich innerhalb von 48 Stunden nach Abschluss der berechneten
-                            Dienste an uns.
-                        </p>
-
-                    </div>
-                </div>
-
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Haftungsbeschränkung</h2>
-                        <p>1.1 Soweit gesetzlich zulässig, haften wir nicht für Folgendes:</p>
-
-                        <p>
-                            - Verluste, die nicht vernünftigerweise aus unserer Fahrlässigkeit oder unserem Verstoß
-                            gegen diese Vereinbarung zu erwarten sind;
-                        </p>
-
-                        <p>- Verluste im Zusammenhang mit Ihrem Geschäft oder dem Geschäft eines Dritten;
-                        </p>
-
-                        <p>
-                            - Kosten, Gebühren, Ausgaben, Verluste, Schäden oder Verbindlichkeiten, die von jemand
-                            anderem als Ihnen im Zusammenhang mit Ihrer Nutzung unserer Dienste erlitten werden.
-                        </p>
-
-                        <p>
-                            1.2 Soweit wir Ihnen im Zusammenhang mit den Diensten haften, ist unsere Haftung auf einen
-                            Betrag begrenzt, der den von Ihnen für die entsprechenden Dienste gezahlten
-                            Dienstleistungsgebühren entspricht.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Streitbeilegung</h2>
-                        <p>1.1 Einvernehmliche Streitbeilegung</p>
-
-                        <p>Benutzer können alle Streitigkeiten an VidTak herantragen, der versuchen wird, sie
-                            einvernehmlich beizulegen.</p>
-
-                        <p>
-                            Das Recht der Benutzer, rechtliche Schritte zu ergreifen, bleibt stets unberührt. Im Falle
-                            von Streitigkeiten bezüglich der Nutzung der Apps oder Dienste werden die Benutzer jedoch
-                            gebeten, VidTak unter den in dieser Vereinbarung angegebenen Kontaktdaten zu kontaktieren.
-                        </p>
-
-                        <p>
-                            Benutzer können die Beschwerde mit einer kurzen Beschreibung und gegebenenfalls den Details
-                            der betreffenden Bestellung, des Kaufs oder des Kontos an VidTak über <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a> senden.
-                        </p>
-
-                        <p>Wir werden die Beschwerde unverzüglich und innerhalb von 21 Tagen nach Erhalt bearbeiten.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Verschiedenes</h2>
-                        <p>
-                            1.1 Die Apps können Websites oder Links von Drittanbietern enthalten, und Sie müssen selbst
-                            entscheiden, ob Sie auf diese Links zugreifen möchten. Wir sind nicht verantwortlich für die
-                            Richtigkeit, Vollständigkeit, Angemessenheit und Zuverlässigkeit von Informationen, Daten,
-                            Meinungen, Bildern, Aussagen oder Vorschlägen, die auf diesen Websites zur Verfügung
-                            gestellt werden. Wenn Sie sich entscheiden, eine Drittanbieter-Website zu besuchen, die mit
-                            den Apps verlinkt ist, sind Sie allein für die möglichen Ergebnisse und Risiken
-                            verantwortlich.
-                        </p>
-
-                        <p>
-                            1.2 Wenn eine Bestimmung dieser Vereinbarung nach geltendem Recht illegal, ungültig oder
-                            nicht durchsetzbar ist, gilt diese Bestimmung in diesem Umfang als nicht Teil dieser
-                            Vereinbarung und beeinträchtigt nicht die Rechtmäßigkeit, Gültigkeit und Durchsetzbarkeit
-                            der übrigen Bestimmungen.
-                        </p>
-
-                        <p>
-                            1.3 Sie stimmen zu, dass wir diese Vereinbarung ganz oder teilweise an eine
-                            Tochtergesellschaft oder ein verbundenes Unternehmen von uns oder an einen Nachfolger durch
-                            Fusion oder Übernahme abtreten oder übertragen können.
-                        </p>
-                        <b>
-                            <p>1.4 HAFTUNGSAUSSCHLUSS</p>
-
-                            <p>
-                                DIE DIENSTE WERDEN "WIE BESEHEN" UND "WIE VERFÜGBAR" BEREITGESTELLT. WIR LEHNEN ALLE
-                                AUSDRÜCKLICHEN, STILLSCHWEIGENDEN ODER GESETZLICHEN VERTRETUNGEN UND GEWÄHRLEISTUNGEN
-                                AB, DIE NICHT AUSDRÜCKLICH IN DIESER VEREINBARUNG ANGEGEBEN SIND, EINSCHLIESSLICH DER
-                                STILLSCHWEIGENDEN GEWÄHRLEISTUNGEN DER MARKTGÄNGIGKEIT, EIGNUNG FÜR EINEN BESTIMMTEN
-                                ZWECK UND NICHTVERLETZUNG. DARÜBER HINAUS MACHEN WIR KEINE DARSTELLUNG, GARANTIE ODER
-                                ZUSICHERUNG HINSICHTLICH DER ZUVERLÄSSIGKEIT, PÜNKTLICHKEIT, QUALITÄT, EIGNUNG ODER
-                                VERFÜGBARKEIT DER DIENSTE ODER DER DURCH DIE NUTZUNG DER DIENSTE ANGEFORDERTEN DIENSTE
-                                ODER WAREN ODER DASS DIE DIENSTE UNUNTERBROCHEN ODER FEHLERFREI SIND. WIR GARANTIEREN
-                                NICHT DIE QUALITÄT, EIGNUNG, SICHERHEIT ODER FÄHIGKEIT VON DRITTANBIETERN. SIE STIMMEN
-                                ZU, DASS DAS GESAMTE RISIKO, DAS SICH AUS IHRER NUTZUNG DER DIENSTE ERGIBT, IN DEM
-                                GRÖSSTMÖGLICHEN GESETZLICH ZULÄSSIGEN UMFANG ALLEIN BEI IHNEN LIEGT.
-                            </p>
-
-                            <p>1.5 HAFTUNGSBESCHRÄNKUNG</p>
-
-                            <p>
-                                WIR HAFTEN NICHT FÜR INDIREKTE, ZUFÄLLIGE, SPEZIELLE, EXEMPLARISCHE, STRAF- ODER
-                                FOLGESCHÄDEN, EINSCHLIESSLICH ENTGANGENEM GEWINN, VERLORENEN DATEN, PERSONENSCHÄDEN ODER
-                                SACHSCHÄDEN IM ZUSAMMENHANG MIT ODER IN VERBINDUNG MIT DER NUTZUNG DER DIENSTE, SELBST
-                                WENN WIR AUF DIE MÖGLICHKEIT SOLCHER SCHÄDEN HINGEWIESEN WURDEN. WIR HAFTEN NICHT FÜR
-                                SCHÄDEN, VERBINDLICHKEITEN ODER VERLUSTE, DIE SICH AUS (i) IHRER NUTZUNG DER DIENSTE
-                                ODER IHREM VERTRAUEN AUF DIE DIENSTE ODER IHRER UNFÄHIGKEIT, AUF DIE DIENSTE ZUZUGREIFEN
-                                ODER SIE ZU NUTZEN; ODER (ii) JEGLICHE TRANSAKTION ODER BEZIEHUNG ZWISCHEN IHNEN UND
-                                EINEM DRITTANBIETER ERGEBEN, SELBST WENN WIR AUF DIE MÖGLICHKEIT SOLCHER SCHÄDEN
-                                HINGEWIESEN WURDEN. WIR HAFTEN NICHT FÜR VERZÖGERUNGEN ODER LEISTUNGSMÄNGEL, DIE AUF
-                                URSACHEN ZURÜCKZUFÜHREN SIND, DIE AUSSERHALB UNSERER KONTROLLE LIEGEN. IN KEINEM FALL
-                                ÜBERSTEIGT UNSERE GESAMTHAFTUNG IHNEN GEGENÜBER IM ZUSAMMENHANG MIT DEN DIENSTEN FÜR
-                                ALLE SCHÄDEN, VERLUSTE UND KLAGEGRÜNDE DIE VON IHNEN FÜR DIE ENTSPRECHENDEN DIENSTE
-                                GEZAHLTEN DIENSTLEISTUNGSGEBÜHREN.
-                            </p>
-
-                            <p>
-                                DIE EINSCHRÄNKUNGEN UND HAFTUNGSAUSSCHLÜSSE IN DIESEM ABSCHNITT VERSUCHEN NICHT, DIE
-                                HAFTUNG ODER IHRE RECHTE ALS VERBRAUCHER ZU BESCHRÄNKEN, DIE NACH GELTENDEM RECHT NICHT
-                                AUSGESCHLOSSEN WERDEN KÖNNEN.
-                            </p>
-
-                            <p>1.6 ENTSCHÄDIGUNG</p>
-
-                            <p>
-                                SIE VERPFLICHTEN SICH, UNS UND UNSERE FÜHRUNGSKRÄFTE, DIREKTOREN, MITARBEITER, FAHRER
-                                AUF ANFORDERUNG GEGEN ALLE ANSPRÜCHE, KLAGEN, KOSTEN, AUSGABEN, FORDERUNGEN, SCHÄDEN,
-                                HAFTUNGEN, VERFAHREN ODER URTEILE ZU SCHÜTZEN, DIE AUS ODER IN VERBINDUNG MIT IHREM
-                                VERSTOSS GEGEN DIESE VEREINBARUNG ODER IHRER VERLETZUNG DER RECHTE EINES DRITTEN
-                                ENTSTEHEN.
-                            </p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Zurück nach oben -->
-
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-
-    <!-- SCRIPTS -->
-
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-
-
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/twitake-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>

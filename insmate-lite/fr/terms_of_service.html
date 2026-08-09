@@ -1,421 +1,67 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<!doctype html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>Rposty - Conditions d'utilisation</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-    <!-- Main css -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="Dernière mise à jour : 10 mai 2023, Bienvenue sur Rposty! Introduction 1.1 Les applications Rposty (ci-après collectivement appelées &quot;Apps&quot;) sont développé">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/insmate-lite/fr/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="insmate-lite"
+    data-app-name="Rposty"
+    data-locale="fr"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- PRE LOADER -->
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-    <!-- Home Section -->
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Rposty - Conditions d'utilisation</h2>
-                        <p id="update-time">
-                            <b>Dernière mise à jour : 10 mai 2023, </b>
-                            <b>Bienvenue sur Rposty!</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Introduction</h2>
-                        <p>1.1 Les applications Rposty (ci-après collectivement appelées "Apps") sont développées et
-                            exploitées par VidTak (ci-après désigné par "VidTak", "Nous" ou "Nous"). </p>
-                        <p>1.2 Les individus ou entreprises (ci-après dénommés "Vous" ou "Utilisateurs") doivent lire
-                            attentivement les Conditions d'utilisation (ci-après dénommées "Accord") avant d'utiliser ou
-                            d'accéder à nos Services. En utilisant nos Services, Vous êtes réputé avoir pleinement
-                            compris et accepté et être prêt à respecter tous les termes et conditions suivants, et cet
-                            Accord devient immédiatement effectif entre les Utilisateurs et VidTak. Si Vous n'êtes pas
-                            d'accord avec cet Accord en tout ou en partie, Vous avez le droit de mettre fin à nos
-                            Services à tout moment.</p>
-                        <p>Pour toute question concernant cet Accord, veuillez contacter notre équipe juridique à
-                            l'adresse <a href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-                        <p>1.3 VidTak a d'autres accords complétant cet Accord, par exemple notre <a
-                                href="../privacy_policy.html">Politique de confidentialité</a> et <a
-                                href="../cookie_policy.html">Politique de cookies</a>. VidTak se réserve le
-                            droit de modifier cet Accord ou les accords connexes à tout moment sans préavis, ce qui
-                            prendra effet et s'appliquera immédiatement. Si Vous n'êtes pas d'accord, Vous avez le droit
-                            d'arrêter les Services convenus ici. Une fois les modifications de nos accords publiées,
-                            Vous continuez à utiliser les Services de VidTak sont réputés avoir pleinement lu, compris
-                            et accepté les accords modifiés, et doivent respecter ces accords.</p>
-                        <p>1.4 Nos Services ne sont pas disponibles pour les personnes de moins de 13 ans (ou l'âge
-                            minimum légal dans votre pays pour utiliser nos Services, ci-après désignés "Enfants"). Les
-                            enfants peuvent ne pas être autorisés à recevoir des services de VidTak à moins que les
-                            services ne soient commandés par le tuteur des enfants personnellement. Dans ce cas, le
-                            tuteur est responsable de l'activité des enfants sur les Services.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Comptes d'utilisateur</h2>
-                        <p>1.1 Pour utiliser nos Services sur les Apps Rposty, Vous devrez fournir les informations
-                            minimales nécessaires pour réaliser les fonctions de base de cette application, telles que
-                            l'obtention des cookies, du système d'exploitation, de l'identifiant unique de l'appareil,
-                            de l'adresse IP de connexion, de la version du logiciel, de la méthode de connexion et du
-                            type de réseau, de l'accéléromètre de l'appareil (comme le dispositif de détection de
-                            gravité), du journal d'opérations et des autorisations d'accès à l'album. Si Vous ne
-                            maintenez pas des informations précises, complètes et à jour (comme l'expiration de la carte
-                            de crédit), Vous pouvez ne pas être en mesure d'utiliser des services partiels.</p>
-                        <p>Votre compte d'utilisateur vous donne accès aux Apps et aux fonctionnalités que Nous pouvons
-                            établir et maintenir de temps à autre et à notre seule discrétion. En vous connectant à nos
-                            Apps avec un service tiers, Vous nous donnez la permission d'accéder et d'utiliser vos
-                            informations de ce service comme permis par ce service, et de stocker vos identifiants de
-                            connexion pour ce service.</p>
-                        <p>VidTak se soucie de l'intégrité et de la sécurité de vos informations personnelles.
-                            Cependant, Nous ne pouvons pas garantir que des tiers non autorisés ne pourront jamais
-                            déjouer nos mesures de sécurité ou utiliser vos informations personnelles à des fins
-                            inappropriées. Vous reconnaissez que Vous fournissez vos informations personnelles à vos
-                            propres risques.</p>
-                        <p>1.2 Vous ne pouvez jamais utiliser le compte d'un autre utilisateur sans permission. Lors de
-                            la création de votre compte, Vous devez fournir des informations précises et complètes. Vous
-                            êtes seul responsable de l'activité qui se produit sur votre compte, et Vous devez garder
-                            votre mot de passe de compte sécurisé. Nous vous encourageons à utiliser des mots de passe
-                            forts (des mots de passe qui utilisent une combinaison de lettres majuscules et minuscules,
-                            de chiffres et de symboles) avec votre compte.</p>
-                        <p>Vous pouvez contrôler votre profil d'utilisateur et comment Vous interagissez avec les Apps
-                            en modifiant les paramètres dans les applications mobiles. En fournissant à VidTak votre
-                            adresse e-mail, Vous consentez à ce que nous utilisions l'adresse e-mail pour vous envoyer
-                            des avis liés à l'application, y compris tout avis requis par la loi, au lieu de la
-                            communication par courrier postal. Nous pouvons également utiliser votre adresse e-mail pour
-                            vous envoyer d'autres messages, tels que des modifications des fonctionnalités de
-                            l'application et des offres spéciales.</p>
-                        <p>1.3 Vous acceptez de ne pas vous engager dans les activités interdites suivantes : (i)
-                            copier, distribuer ou divulguer toute partie des Apps sur tout support, y compris sans
-                            limitation par tout scraping automatisé ou non automatisé ; (ii) utiliser tout système
-                            automatisé, y compris mais sans s'y limiter des robots, des araignées, des lecteurs hors
-                            ligne, etc., pour accéder aux Apps d'une manière qui envoie plus de messages de requête aux
-                            serveurs de VidTak qu'un humain ne peut raisonnablement produire dans la même période de
-                            temps en utilisant un navigateur Web en ligne conventionnel ; (iii) transmettre des spams,
-                            des lettres en chaîne ou d'autres e-mails non sollicités ; (iv) tenter d'interférer avec,
-                            compromettre l'intégrité du système ou la sécurité ou déchiffrer toute transmission vers ou
-                            depuis les serveurs exécutant les Apps ; (v) prendre toute action qui impose, ou peut
-                            imposer à notre seule discrétion une charge déraisonnable ou disproportionnée sur notre
-                            infrastructure ; (vi) télécharger des données invalides, des virus, des vers ou d'autres
-                            agents logiciels via les Apps ; (vii) collecter ou récolter toute information
-                            personnellement identifiable, y compris les noms de compte, à partir des Apps ; (viii)
-                            utiliser les Apps à des fins commerciales sans avoir tous les droits et licences nécessaires
-                            pour le Contenu Utilisateur (tel que défini ci-dessous) ; (ix) usurper l'identité d'une
-                            autre personne ou autrement fausser votre affiliation avec une personne ou une entité, mener
-                            une fraude, cacher ou tenter de cacher votre identité ; (x) interférer avec le bon
-                            fonctionnement des Apps ; (xi) accéder à tout contenu des Apps via toute technologie ou
-                            moyen autre que ceux fournis par les Apps ; ou (xii) contourner les mesures que Nous pouvons
-                            utiliser pour empêcher ou restreindre l'accès aux Apps, y compris sans limitation les
-                            fonctionnalités qui empêchent ou restreignent l'utilisation ou la copie de tout contenu ou
-                            imposent des limitations sur l'utilisation des Apps ou du contenu qui y est inclus.</p>
-                        <p>1.4 Nous pouvons, sans préavis, modifier les Apps, arrêter de fournir les Apps ou des
-                            fonctionnalités des Apps, à Vous ou créer des limites d'utilisation pour les Apps. Nous
-                            pouvons suspendre temporairement ou définitivement votre accès aux Apps, ou supprimer tout
-                            Contenu Utilisateur, sans préavis et responsabilité pour toute raison, y compris si à notre
-                            seule discrétion Vous violez une disposition de cet Accord, ou sans raison. À la résiliation
-                            pour quelque raison que ce soit ou sans raison, Vous continuez à être lié par cet Accord.
-                        </p>
-                        <p>1.5 Vous êtes seul responsable de votre conduite et de toutes les données, textes, fichiers,
-                            informations, images, photos et clips vidéo, enregistrements sonores, œuvres musicales,
-                            narration, œuvres d'auteur, liens et autres contenus ou matériels que Vous soumettez, postez
-                            ou affichez sur ou via nos Apps. VidTak n'aura aucune responsabilité pour la conduite en
-                            relation avec votre utilisation de nos Apps.</p>
-                        <p>1.6 S'il est constaté que votre compte ou nos Apps ont été utilisés illégalement par
-                            d'autres, Vous devez immédiatement notifier VidTak pour éviter des pertes inutiles. Si et
-                            dans la mesure permise par la loi applicable, Nous pouvons, mais n'avons aucune obligation
-                            de (i) vous demander de fournir une pièce d'identité ou d'autres informations, (ii)
-                            entreprendre des vérifications conçues pour aider à vérifier votre identité ou vos
-                            antécédents, (iii) vous contrôler par rapport aux bases de données tierces ou autres sources
-                            et demander des rapports aux prestataires de services, et (iv) obtenir des rapports des
-                            dossiers publics de condamnations pénales ou des enregistrements de délinquants sexuels ou
-                            leurs équivalents locaux.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Contenu utilisateur</h2>
-                        <p>1.1 Tout matériel qu'un Utilisateur fournit, partage, soumet, affiche ou crée autrement en
-                            utilisant les Apps est un Contenu Utilisateur. Nous ne revendiquons aucun droit de propriété
-                            sur le Contenu Utilisateur créé par Vous.</p>
-                        <p>VidTak a le droit (mais pas l'obligation) à sa seule discrétion de retirer tout Contenu
-                            Utilisateur qui est stocké via les Apps. Si Vous croyez que votre œuvre protégée par des
-                            droits d'auteur a été copiée d'une manière qui constitue une violation de droit d'auteur et
-                            se trouve sur les Apps, veuillez nous en informer. Et Vous devez fournir les informations
-                            suivantes par écrit :</p>
-                        <p>- Une signature électronique ou physique d'une personne autorisée à agir au nom du
-                            propriétaire du droit d'auteur ;</p>
-                        <p>- Identification de l'œuvre protégée par des droits d'auteur que Vous prétendez avoir été
-                            violée ;</p>
-                        <p>- Identification du matériel que Vous prétendez être en violation, et où il se trouve dans
-                            les Apps ;</p>
-                        <p>- Informations raisonnablement suffisantes pour permettre à VidTak de vous contacter, telles
-                            que votre adresse, numéro de téléphone et adresse e-mail ;</p>
-                        <p>- Une déclaration que Vous avez la conviction de bonne foi que l'utilisation du matériel de
-                            la manière contestée n'est pas autorisée par le propriétaire du droit d'auteur, son agent ou
-                            la loi ; et</p>
-                        <p>- Une déclaration, faite sous peine de parjure, que les informations ci-dessus sont exactes,
-                            et que Vous êtes le propriétaire du droit d'auteur ou êtes autorisé à agir au nom du
-                            propriétaire.</p>
-                        <p>Les informations ci-dessus doivent être soumises à l'adresse e-mail suivante : <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-                        <p>1.2 Vous acceptez de ne pas publier, stocker, transmettre, créer ou partager tout Contenu
-                            Utilisateur qui : (i) peut créer un risque de préjudice, de perte, de blessure physique ou
-                            mentale, de détresse émotionnelle, de décès, d'invalidité, de défiguration ou de maladie
-                            physique ou mentale pour Vous, pour toute autre personne, ou pour tout animal ; (ii) peut
-                            créer un risque de toute autre perte ou dommage à toute personne ou propriété ; (iii)
-                            cherche à nuire ou exploiter les enfants en les exposant à un contenu inapproprié, en
-                            demandant des détails personnellement identifiables ou autrement ; (iv) peut constituer ou
-                            contribuer à un crime ou délit ; (v) contient toute information ou contenu que nous jugeons
-                            être illégal, nuisible, abusif, racialement ou ethniquement offensant, diffamatoire,
-                            enfreignant, envahissant la vie privée ou les droits de publicité, harcelant, humiliant pour
-                            d'autres personnes (publiquement ou autrement), calomnieux, menaçant, profane ou autrement
-                            inacceptable ; (vi) contient toute information ou contenu illégal (y compris, sans
-                            limitation, la divulgation d'informations privilégiées en vertu de la loi sur les valeurs
-                            mobilières ou des secrets commerciaux d'une autre partie) ; ou (vii) contient toute
-                            information ou contenu que Vous n'avez pas le droit de rendre disponible en vertu de toute
-                            loi ou en vertu de relations contractuelles ou fiduciaires. Vous acceptez que tout Contenu
-                            Utilisateur que Vous créez, stockez ou partagez ne viole pas et ne violera pas les droits de
-                            tiers de quelque nature que ce soit, y compris sans limitation tout droit de propriété
-                            intellectuelle (tel que défini ci-dessous) ou droits à la vie privée. VidTak se réserve le
-                            droit, mais n'est pas obligé, de rejeter et/ou retirer tout Contenu Utilisateur que VidTak
-                            croit, à sa seule discrétion, violer ces dispositions.</p>
-                        <p>1.3 Aux fins de cet Accord, les droits de propriété intellectuelle désignent tous les droits
-                            de brevet, droits d'auteur, droits sur les masques de travail, droits moraux, droits de
-                            publicité, marques de commerce, habillages commerciaux et droits de service, bonne volonté,
-                            droits de secret commercial et autres droits de propriété intellectuelle tels qu'ils peuvent
-                            exister maintenant ou à l'avenir, et toutes les applications, enregistrements,
-                            renouvellements et extensions de ceux-ci, en vertu des lois de tout état, pays, territoire
-                            ou autre juridiction.</p>
-                        <p>1.4 En ce qui concerne votre Contenu Utilisateur, Vous affirmez, déclarez et garantissez ce
-                            qui suit :</p>
-                        <p>Votre Contenu Utilisateur et votre utilisation de celui-ci comme envisagé par cet Accord et
-                            les Apps ne violeront aucune loi ni n'enfreindront les droits de tiers, y compris mais sans
-                            s'y limiter tout droit de propriété intellectuelle ou droits de confidentialité.</p>
-                        <p>Dans la mesure où Vous utilisez nos Apps à des fins commerciales et que votre Contenu
-                            Utilisateur contient tout matériel protégé par des droits d'auteur qui n'est pas votre œuvre
-                            originale ou dont Vous ne détenez pas autrement les droits d'auteur, Vous avez obtenu tous
-                            les droits, licences, consentements et permissions nécessaires pour utiliser ce matériel
-                            protégé par des droits d'auteur en relation avec la création et/ou la diffusion de ce
-                            Contenu Utilisateur en utilisant les Apps.</p>
-                        <p>1.5 VidTak peut exercer les droits sur votre Contenu Utilisateur accordés en vertu de cet
-                            Accord sans responsabilité pour le paiement de frais de guilde, de résidus, de paiements, de
-                            frais ou de redevances payables en vertu de tout accord de négociation collective ou
-                            autrement. VidTak n'assume aucune responsabilité et n'assume aucune responsabilité pour tout
-                            Contenu Utilisateur que Vous ou tout autre Utilisateur ou tiers crée, stocke, partage, poste
-                            ou envoie via les Apps. Vous êtes seul responsable de votre Contenu Utilisateur et des
-                            conséquences de sa publication, de sa publication ou de son partage et Vous acceptez que
-                            Nous agissions uniquement comme un conduit passif pour votre distribution en ligne et la
-                            publication de votre Contenu Utilisateur. Si votre Contenu enfreint cet Accord, Vous pouvez
-                            en assumer la responsabilité légale pour ce contenu.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Nos droits de propriété</h2>
-                        <p>1.1 Les Apps contiennent du matériel appartenant à ou sous licence de VidTak (ci-après
-                            collectivement dénommé "IP de VidTak"). L'IP de VidTak peut être protégée par des droits
-                            d'auteur, des marques de commerce, des brevets, des secrets commerciaux et d'autres lois, et
-                            entre Vous et VidTak, VidTak possède et conserve tous les droits sur l'IP de VidTak. Vous ne
-                            retirerez, modifierez ou ne cacherez aucun droit d'auteur, marque de commerce, marque de
-                            service ou autre avis de droits de propriété incorporé dans ou accompagnant les Apps et Vous
-                            ne reproduirez, modifierez, adapterez, préparerez des œuvres dérivées basées sur,
-                            exécuterez, afficherez, publierez, distribuerez, transmettrez, diffuserez, vendrez,
-                            licencierez ou exploiterez autrement les Apps.</p>
-                        <p>1.2 Le nom et le logo Rposty sont des marques de commerce de VidTak, et ne peuvent être
-                            copiés, imités ou utilisés, en tout ou en partie, sans l'autorisation écrite préalable de
-                            VidTak. De plus, tous les en-têtes de page, les graphiques personnalisés, les icônes de
-                            bouton et les scripts sont des marques de service, des marques de commerce et/ou des
-                            habillages commerciaux de VidTak, et ne peuvent être copiés, imités ou utilisés, en tout ou
-                            en partie, sans l'autorisation écrite préalable de VidTak.</p>
-                        <p>1.3 Vous pouvez choisir ou nous pouvons vous inviter à soumettre des commentaires ou des
-                            idées sur les Apps, y compris mais sans s'y limiter sur la façon d'améliorer les Apps
-                            (ci-après collectivement dénommés "Idée"). En soumettant toute Idée, Vous acceptez que votre
-                            divulgation soit gratuite, non sollicitée et sans restriction et ne place VidTak sous aucune
-                            obligation fiduciaire ou autre et que nous sommes libres d'utiliser l'Idée sans compensation
-                            supplémentaire pour Vous, et/ou de divulguer l'Idée sur une base non confidentielle ou
-                            autrement à quiconque. Vous reconnaissez en outre qu'en acceptant votre soumission, VidTak
-                            ne renonce à aucun droit d'utiliser des idées similaires ou connexes précédemment connues
-                            par VidTak, ou développées par ses employés, ou obtenues auprès de sources autres que Vous.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Nos services</h2>
-                        <p>1.1 Nous vous fournirons des services de téléchargement et d'autres services conformément à
-                            cet Accord.</p>
-                        <p>1.2 Nous utiliserons les services connexes de Google (tels que Google Analytics et Google
-                            Cloud) pour analyser l'utilisation et garantir la conformité avec leurs conditions et
-                            politiques de confidentialité.</p>
-                        <p>Sans votre autorisation et celle de Google, nous ne collecterons ni ne traiterons vos
-                            informations personnelles via les services de Google. Pour plus d'informations, Vous pouvez
-                            consulter "Comment Google utilise les données lorsque vous utilisez les sites ou
-                            applications de nos partenaires" (situé à <a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>,
-                            ou toute autre URL que Google peut fournir de temps à autre) pour comprendre la politique de
-                            confidentialité de Google et de ses composants connexes.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Frais, paiement et facture</h2>
-                        <p>1.1 Nous ne vous facturons pas l'utilisation des Apps sauf si Vous souscrivez des services
-                            pour les membres via Google Play. De plus, nous bénéficierons d'Admob, IronSouce en publiant
-                            des publicités sur nos Apps. Pour les tarifs des frais de service, veuillez vous référer au
-                            prix affiché sur les Apps ou envoyer un e-mail à <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-                        <p>VEUILLEZ NOTER QUE, sauf si nous avons un accord spécial dans cet Accord, le contenu des
-                            frais et paiements sera conforme aux exigences des Conditions d'utilisation de Google Play.
-                        </p>
-                        <p>1.2 Nous pouvons, à notre seule discrétion, offrir certains utilisateurs des coupons de
-                            réduction de temps à autre, ce qui peut entraîner des montants différents facturés pour les
-                            mêmes ou similaires services, et Vous acceptez que ces coupons ne s'appliqueront pas à Vous
-                            sauf si nous vous les avons mis à disposition.</p>
-                        <p>1.3 L'abonnement sera automatiquement renouvelé et les frais d'abonnement seront facturés en
-                            fonction des services que Vous avez choisis après l'essai, sauf annulation. Vous pouvez
-                            gérer ou annuler votre abonnement à tout moment dans l'abonnement sur Google Play. Pour
-                            annuler l'abonnement, veuillez désactiver le renouvellement automatique au moins 24 heures à
-                            l'avance avant la fin de la période d'abonnement en cours. Vous ne recevrez pas de
-                            remboursement pour la période de facturation en cours, sauf disposition contraire de la
-                            politique de remboursement de Google Play.</p>
-                        <p>1.4 VEUILLEZ NOTER QUE nous nous réservons le droit de demander des frais supplémentaires
-                            résultant de tout dommage causé par votre utilisation de nos Services.</p>
-                        <p>1.5 Nous lions votre compte de paiement à votre compte personnel sur Google Play Store. Pour
-                            les opérations de paiement erronées ou non autorisées (y compris mais sans s'y limiter les
-                            déductions erronées ou non autorisées) de votre compte en relation avec les Apps de VidTak,
-                            Google Payment effectuera un remboursement direct à Vous, et Vous acceptez de nous autoriser
-                            à réclamer un remboursement au prestataire de paiement correspondant en votre nom.</p>
-                        <p>1.6 Vous pouvez demander la facture du paiement que Vous avez effectué pour notre service
-                            supplémentaire via les Apps de temps à autre, et nous émettrons la facture correspondante à
-                            l'adresse e-mail que Vous fournissez. Si Vous avez des questions, Vous devez nous contacter
-                            dans les 48 heures suivant la fin des Services facturés.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Limitation de responsabilité</h2>
-                        <p>1.1 Dans la mesure permise par la loi applicable, Nous ne serons pas responsables des
-                            éléments suivants :</p>
-                        <p>- toute perte qui ne pourrait raisonnablement être prévue résultant de notre négligence ou de
-                            notre violation de cet Accord ;</p>
-                        <p>- toute perte liée à votre entreprise ou à celle de tout autre tiers ;</p>
-                        <p>- tous coûts, frais, pertes, dommages ou responsabilités subis par toute personne autre que
-                            Vous en relation avec votre utilisation de nos Services.</p>
-                        <p>1.2 À condition que nous soyons responsables envers Vous en relation avec les Services, notre
-                            responsabilité sera limitée à un montant égal aux frais de service que Vous avez payés pour
-                            les Services correspondants au total.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Résolution des litiges</h2>
-                        <p>1.1 Résolution à l'amiable des litiges</p>
-                        <p>Les utilisateurs peuvent soumettre tout litige à VidTak qui s'efforcera de les résoudre à
-                            l'amiable.</p>
-                        <p>Bien que le droit des utilisateurs d'intenter une action en justice reste toujours intact, en
-                            cas de controverse concernant l'utilisation des Apps ou des Services, les utilisateurs sont
-                            invités à contacter VidTak aux coordonnées fournies dans cet Accord.</p>
-                        <p>Les utilisateurs peuvent soumettre la plainte en incluant une brève description et, le cas
-                            échéant, les détails de la commande, de l'achat ou du compte associé, à VidTaks via <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-                        <p>Nous traiterons la plainte sans délai injustifié et dans les 21 jours suivant sa réception.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Divers</h2>
-                        <p>1.1 Les Apps peuvent contenir des sites Web tiers ou des liens vers des sites Web tiers, et
-                            Vous devez décider si Vous souhaitez accéder à ces liens. Nous ne sommes pas responsables de
-                            l'exactitude, de l'exhaustivité, de l'adéquation et de la fiabilité de toute information,
-                            donnée, opinion, image, déclaration ou suggestion mise à disposition sur ces sites Web. Si
-                            Vous décidez de visiter un site Web tiers lié aux Apps, Vous êtes seul responsable des
-                            résultats possibles et des risques qui en découlent.</p>
-                        <p>1.2 Si une disposition de cet Accord est jugée illégale, invalide ou inapplicable en vertu de
-                            la loi applicable, cette disposition sera réputée ne pas faire partie de cet Accord, et
-                            n'affectera pas la légalité, la validité et l'applicabilité des autres dispositions.</p>
-                        <p>1.3 Vous acceptez que Nous puissions céder ou transférer cet Accord en tout ou en partie à
-                            une filiale ou affiliée de nous ou à un successeur par fusion ou acquisition.</p>
-                        <b>
-                            <p>1.4 AVERTISSEMENT</p>
-                            <p>LES SERVICES SONT FOURNIS "TELS QUELS" ET "TELS QUE DISPONIBLES". NOUS DÉCLINONS TOUTE
-                                REPRÉSENTATION ET GARANTIE, EXPRESSE, IMPLICITE OU STATUTAIRE, NON EXPRESSÉMENT STIPULÉE
-                                DANS CET ACCORD, Y COMPRIS LES GARANTIES IMPLICITES DE QUALITÉ MARCHANDE, D'ADÉQUATION À
-                                UN USAGE PARTICULIER ET D'ABSENCE DE CONTREFAÇON. EN OUTRE, NOUS NE FAISONS AUCUNE
-                                REPRÉSENTATION, GARANTIE OU GARANTIE CONCERNANT LA FIABILITÉ, L'OPPORTUNITÉ, LA QUALITÉ,
-                                L'ADÉQUATION OU LA DISPONIBILITÉ DES SERVICES OU DE TOUT SERVICE OU BIEN DEMANDÉ PAR LE
-                                BIAIS DE L'UTILISATION DES SERVICES OU QUE LES SERVICES SERONT ININTERROMPUS OU SANS
-                                ERREUR. NOUS NE GARANTISSONS PAS LA QUALITÉ, L'ADÉQUATION, LA SÉCURITÉ OU LA CAPACITÉ
-                                DES FOURNISSEURS TIERS. VOUS ACCEPTEZ QUE L'ENSEMBLE DES RISQUES DÉCOULANT DE VOTRE
-                                UTILISATION DES SERVICES, EN RELATION AVEC CEUX-CI, RESTE EXCLUSIVEMENT À VOTRE CHARGE,
-                                DANS LA MESURE MAXIMALE PERMISE PAR LA LOI APPLICABLE.</p>
-                            <p>1.5 LIMITATION DE RESPONSABILITÉ</p>
-                            <p>NOUS NE SERONS PAS RESPONSABLES DES DOMMAGES INDIRECTS, INCIDENTS, SPÉCIAUX, EXEMPLAIRES,
-                                PUNITIFS OU CONSÉCUTIFS, Y COMPRIS LES PERTES DE PROFITS, LES PERTES DE DONNÉES, LES
-                                BLESSURES PERSONNELLES OU LES DOMMAGES MATÉRIELS LIÉS À, EN CONNEXION AVEC, OU RÉSULTANT
-                                DE TOUTE UTILISATION DES SERVICES, MÊME SI NOUS AVONS ÉTÉ INFORMÉS DE LA POSSIBILITÉ DE
-                                TELS DOMMAGES. NOUS NE SERONS PAS RESPONSABLES DES DOMMAGES, RESPONSABILITÉS OU PERTES
-                                DÉCOULANT DE (i) VOTRE UTILISATION OU CONFIANCE DANS LES SERVICES OU VOTRE INCAPACITÉ À
-                                ACCÉDER OU À UTILISER LES SERVICES ; OU (ii) TOUTE TRANSACTION OU RELATION ENTRE VOUS ET
-                                TOUT FOURNISSEUR TIERS, MÊME SI NOUS AVONS ÉTÉ INFORMÉS DE LA POSSIBILITÉ DE TELS
-                                DOMMAGES. NOUS NE SERONS PAS RESPONSABLES DES RETARDS OU DES DÉFAILLANCES DANS
-                                L'EXÉCUTION RÉSULTANT DE CAUSES INDÉPENDANTES DE NOTRE CONTRÔLE RAISONNABLE. EN AUCUN
-                                CAS, NOTRE RESPONSABILITÉ TOTALE ENVERS VOUS EN CONNEXION AVEC LES SERVICES POUR TOUS
-                                LES DOMMAGES, PERTES ET CAUSES D'ACTION NE DÉPASSERA LE MONTANT DES FRAIS DE SERVICE QUE
-                                NOUS VOUS AVONS FACTURÉ POUR LE SERVICE CORRESPONDANT.</p>
-                            <p>LES LIMITATIONS ET DÉCLARATIONS DE NON-RESPONSABILITÉ DANS CETTE SECTION NE PRÉTENDENT
-                                PAS LIMITER LA RESPONSABILITÉ OU MODIFIER VOS DROITS EN TANT QUE CONSOMMATEUR QUI NE
-                                PEUVENT ÊTRE EXCLUS EN VERTU DE LA LOI APPLICABLE.</p>
-                            <p>1.6 INDEMNITÉ</p>
-                            <p>VOUS VOUS ENGAGEZ À NOUS INDEMNISER ET À INDEMNISER NOS DIRIGEANTS, DIRECTEURS, EMPLOYÉS,
-                                CHAUFFEURS À DEMANDE CONTRE TOUTES LES RÉCLAMATIONS, ACTIONS, CHARGES, COÛTS, DÉPENSES,
-                                DEMANDES, DOMMAGES, RESPONSABILITÉS, PROCÉDURES OU JUGEMENTS QUI DÉCOULENT OU SONT EN
-                                LIEN AVEC VOTRE VIOLATION OU VIOLATION DE CET ACCORD, OU VOTRE VIOLATION DES DROITS DE
-                                TOUT TIERS.</p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back top -->
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-    <!-- SCRIPTS -->
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/insmate-lite-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>

@@ -1,566 +1,67 @@
-<!DOCTYPE html>
-<html lang="hu">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-
+<!doctype html>
+<html lang="hu" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+      (() => {
+        try {
+          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          document.documentElement.dataset.theme = theme
+          document.documentElement.style.colorScheme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
     <title>Rposty - Szolgáltatási Feltételek</title>
-
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <link rel="stylesheet" href="/static/appwebsite/bootstrap.min.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/animate.css" charset="UTF-8">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/appwebsite/magnific-popup.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.theme.css" charset="UTF-8">
-    <link rel="stylesheet" href="/static/appwebsite/owl.carousel.css" charset="UTF-8">
-
-    <!-- Main css -->
-    <link rel="stylesheet" href="/static/appwebsite/style.css" charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet" type="text/css" charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700" rel="stylesheet" type="text/css"
-        charset="UTF-8">
-</head>
-
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-    <div class="adcenter">
-        <script src="/static/appwebsite/ggad2_728x90.js"></script>
+    <meta name="description" content="Utolsó frissítés: 2023. május 10., Üdvözöljük az Rposty-nál! Bevezetés 1.1 Az Rposty alkalmazásokat (a továbbiakban együttesen &quot;Alkalmazások&quot;) a VidTak (a ">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidtak.net/insmate-lite/hu/terms_of_service.html">
+    <link rel="icon" href="/static/favicon_io/favicon.ico">
+    <link rel="stylesheet" href="/static/legal-i18n/legal.css">
+  </head>
+  <body
+    data-app="insmate-lite"
+    data-app-name="Rposty"
+    data-locale="hu"
+    data-document="terms_of_service.html"
+  >
+    <div id="legal-app" v-cloak>
+      <header class="legal-toolbar">
+        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <nav class="legal-documents" :aria-label="ui.documents">
+          <a
+            v-for="item in documentLinks"
+            :key="item.file"
+            :class="{ active: item.file === documentFile }"
+            :href="item.href"
+          >{{ item.label }}</a>
+        </nav>
+        <button class="legal-theme" type="button" :aria-label="themeLabel" :title="themeLabel" @click="toggleTheme">
+          <img
+            class="theme-mode-icon"
+            :src="theme === 'dark' ? '/static/legal-i18n/theme-sun.svg' : '/static/legal-i18n/theme-moon.svg'"
+            alt=""
+            aria-hidden="true"
+          >
+        </button>
+        <label class="legal-language">
+          <span>{{ ui.language }}</span>
+          <select :value="locale" @change="changeLocale">
+            <option v-for="item in locales" :key="item.code" :value="item.code">{{ item.label }}</option>
+          </select>
+        </label>
+      </header>
+      <aside v-if="usesEnglishFallback" class="translation-notice" role="status">{{ fallbackNotice }}</aside>
+      <main class="legal-content" v-html="currentMessage.content"></main>
+      <footer class="legal-footer">© 2026 VidTak Apps.</footer>
     </div>
-
-    <!-- PRE LOADER -->
-    <div class="preloader" style="display: none;">
-        <div class="sk-spinner sk-spinner-pulse"></div>
-    </div>
-
-    <!-- Home Section -->
-    <section id="screenshot">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Rposty - Szolgáltatási Feltételek</h2>
-                        <p id="update-time">
-                            <b>Utolsó frissítés: 2023. május 10., </b>
-                            <b>Üdvözöljük az Rposty-nál!</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Bevezetés</h2>
-                        <p>1.1 Az Rposty alkalmazásokat (a továbbiakban együttesen "Alkalmazások") a VidTak (a
-                            továbbiakban "VidTak", "Mi" vagy "Közülünk") fejlesztette és üzemelteti.
-                        </p>
-
-                        <p>1.2 Az egyének vagy vállalkozások (a továbbiakban "Ön" vagy "Felhasználók") alaposan és
-                            figyelmesen elolvassák a Felhasználási Feltételeket (a továbbiakban "Megállapodás"), mielőtt
-                            használnák vagy hozzáférnének Szolgáltatásainkhoz. A Szolgáltatások használatával Ön teljes
-                            mértékben megértette, elfogadta és hajlandó betartani az alábbi feltételeket és kikötéseket,
-                            és ez a Megállapodás azonnal hatályba lép a Felhasználók és a VidTak között. Ha Ön nem ért
-                            egyet ezzel a Megállapodással egészében vagy részben, jogában áll bármikor leállítani
-                            Szolgáltatásainkat.</p>
-
-                        <p> Bármilyen kérdése van ezzel a Megállapodással kapcsolatban, kérjük, lépjen kapcsolatba jogi
-                            csapatunkkal a <a href="mailto:legal@vidtak.net">legal@vidtak.net</a> e-mail címen.</p>
-
-                        <p> 1.3 A VidTaknak további megállapodásai is vannak, amelyek kiegészítik ezt a Megállapodást,
-                            például az <a href="../privacy_policy.html">Adatvédelmi Szabályzatunk</a> és az <a
-                                href="../cookie_policy.html">Cookie Szabályzatunk</a>. A VidTak fenntartja a jogot, hogy
-                            bármikor módosítsa ezt a Megállapodást vagy a kapcsolódó megállapodásokat értesítés nélkül,
-                            amelyek azonnal hatályba lépnek és érvényesek lesznek. Ha Ön nem ért egyet, jogában áll
-                            leállítani a jelen Megállapodásban foglalt Szolgáltatásokat. Miután a megállapodásaink
-                            változásait közzétettük, a VidTak Szolgáltatásainak további használatával Ön teljes
-                            mértékben elolvasta, megértette és elfogadta a módosított megállapodásokat, és köteles
-                            betartani azokat.</p>
-
-                        <p> 1.4 Szolgáltatásaink nem használhatók 13 év alatti személyek (vagy az Ön országában a
-                            Szolgáltatások használatához szükséges minimális legális kor, a továbbiakban "Gyermekek")
-                            által. A Gyermekek nem kaphatnak semmilyen szolgáltatást a VidTak-tól, kivéve, ha a
-                            szolgáltatásokat a Gyermekek gondviselője rendeli személyesen. Ebben az esetben a gondviselő
-                            felelős a Gyermekek tevékenységéért a Szolgáltatásokon.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Felhasználói Fiókok</h2>
-                        <p>
-                            1.1 Az Rposty Alkalmazásokon történő Szolgáltatásaink használatához Önnek meg kell adnia a
-                            minimális információkat, amelyek szükségesek az alkalmazás alapfunkcióinak megvalósításához,
-                            például a cookie-k, az operációs rendszer, az egyedi eszközazonosító, a bejelentkezési
-                            IP-cím, a szoftververzió, a kapcsolat módja és típusa, az eszközgyorsító (például
-                            gravitációs érzékelő), a műveleti napló és az albumhoz való hozzáférés engedélyeinek
-                            beszerzése. Ha nem tartja karban a pontos, teljes és naprakész információkat (például lejárt
-                            hitelkártya), előfordulhat, hogy nem tudja használni a szolgáltatások egy részét.
-                        </p>
-
-                        <p>
-                            Felhasználói fiókja hozzáférést biztosít az Alkalmazásokhoz és azok funkcióihoz, amelyeket
-                            időről időre és kizárólagos belátásunk szerint létesíthetünk és fenntarthatunk. Ha harmadik
-                            fél szolgáltatásával csatlakozik Alkalmazásainkhoz, Ön engedélyt ad nekünk, hogy
-                            hozzáférjünk és használjuk az adott szolgáltatásból származó információit, ahogyan azt a
-                            szolgáltatás lehetővé teszi, valamint hogy tároljuk a szolgáltatáshoz tartozó bejelentkezési
-                            hitelesítő adatait.
-                        </p>
-
-                        <p>
-                            A VidTak törődik a személyes adatainak integritásával és biztonságával. Azonban nem
-                            garantálhatjuk, hogy jogosulatlan harmadik felek soha nem tudják legyőzni biztonsági
-                            intézkedéseinket vagy helytelen célokra használni személyes adatait. Ön tudomásul veszi,
-                            hogy személyes adatait saját felelősségére adja meg.
-                        </p>
-
-                        <p>
-                            1.2 Soha nem használhat más felhasználó fiókját engedély nélkül. Fiók létrehozásakor pontos
-                            és teljes információkat kell megadnia. Kizárólag Ön felelős a fiókján történő
-                            tevékenységekért, és gondoskodnia kell fiókja jelszavának biztonságáról. Arra ösztönözzük,
-                            hogy erős jelszavakat használjon (a jelszó nagy- és kisbetűket, számokat és szimbólumokat
-                            tartalmaz) fiókjához.
-                        </p>
-
-                        <p>
-                            A mobilalkalmazások beállításaiban vezérelheti felhasználói profilját és azt, hogyan lép
-                            kapcsolatba az Alkalmazásokkal. A VidTaknak megadott e-mail címével hozzájárul, hogy e-mail
-                            címet használjunk az Önnek szóló alkalmazással kapcsolatos értesítések küldésére, beleértve
-                            bármilyen törvény által előírt értesítést, postai levél helyett. Az e-mail címet arra is
-                            használhatjuk, hogy más üzeneteket küldjünk Önnek, például az alkalmazás funkcióinak
-                            változásairól és különleges ajánlatokról.
-                        </p>
-
-                        <p>
-                            1.3 Ön vállalja, hogy nem vesz részt a következő tiltott tevékenységekben: (i) az
-                            Alkalmazások bármely részének másolása, terjesztése vagy nyilvánosságra hozása bármilyen
-                            médiumban, beleértve, de nem kizárólagosan, automatizált vagy nem automatizált adatgyűjtést;
-                            (ii) bármilyen automatizált rendszer, beleértve, de nem kizárólagosan, robotok, pókok,
-                            offline olvasók stb. használata az Alkalmazásokhoz való hozzáféréshez oly módon, hogy több
-                            kérést küld a VidTak szervereknek, mint amennyit egy ember ésszerű időn belül képes
-                            előállítani hagyományos online webböngésző használatával; (iii) spam, lánclevelek vagy más
-                            nem kívánt e-mailek továbbítása; (iv) kísérlet a rendszer integritásának vagy biztonságának
-                            megzavarására, vagy az Alkalmazásokat futtató szerverek felé vagy onnan érkező továbbítások
-                            megfejtésére; (v) bármilyen olyan művelet végrehajtása, amely ésszerűtlenül vagy
-                            aránytalanul nagy terhelést ró infrastruktúránkra; (vi) érvénytelen adatok, vírusok, férgek
-                            vagy más szoftveres ügynökök feltöltése az Alkalmazásokon keresztül; (vii) személyes
-                            azonosításra alkalmas információk, beleértve fiókneveket, gyűjtése vagy betakarítása az
-                            Alkalmazásokból; (viii) az Alkalmazások használata bármilyen kereskedelmi célra, ha nincs
-                            minden szükséges jog és engedély a Felhasználói Tartalomhoz (ahogyan azt alább definiáljuk);
-                            (ix) más személy kiadása magáért vagy más módon tévesen állítva valaki vagy valami más hozzá
-                            tartozását, csalás végrehajtása, személyazonossága elrejtése vagy elrejtésére irányuló
-                            kísérlet; (x) az Alkalmazások megfelelő működésének megzavarása; (xi) bármilyen tartalomhoz
-                            való hozzáférés az Alkalmazásokon keresztül bármilyen más technológia vagy eszköz
-                            használatával, mint amelyeket az Alkalmazások biztosítanak; vagy (xii) azoknak az
-                            intézkedéseknek a megkerülése, amelyeket az Alkalmazásokhoz való hozzáférés
-                            megakadályozására vagy korlátozására használhatunk, beleértve, de nem kizárólagosan, olyan
-                            funkciókat, amelyek megakadályozzák vagy korlátozzák bármely tartalom használatát vagy
-                            másolását, vagy korlátozzák az Alkalmazások vagy az azokban található tartalom használatát.
-                        </p>
-
-                        <p>
-                            1.4 Előzetes értesítés nélkül megváltoztathatjuk az Alkalmazásokat, leállíthatjuk az
-                            Alkalmazások vagy az Alkalmazások funkcióinak nyújtását Önnek, vagy korlátozásokat
-                            állíthatunk fel az Alkalmazások használatára. Bármikor, értesítés és felelősségvállalás
-                            nélkül, véglegesen vagy ideiglenesen felfüggeszthetjük vagy törölhetjük hozzáférését az
-                            Alkalmazásokhoz, vagy törölhetjük bármely Felhasználói Tartalmat, ha kizárólagos belátásunk
-                            szerint Ön megsérti ennek a Megállapodásnak bármely rendelkezését, vagy bármilyen más okból.
-                            A Megszakítás bármilyen okból vagy ok nélkül történhet, és Ön továbbra is köteles betartani
-                            ezt a Megállapodást.
-                        </p>
-                        <p>
-                            1.5 Kizárólag Ön felelős a magatartásáért és bármely adatért, szövegért, fájlokért,
-                            információért, képekért, fényképekért és videóklipekért, hangfelvételekért, zenei művekért,
-                            narrációkért, szerzői művekért, hivatkozásokért és egyéb tartalomért vagy anyagokért,
-                            amelyeket beküld, közzétesz vagy megjelenít az Alkalmazásokon keresztül. A VidTak nem vállal
-                            felelősséget a magatartásért az Alkalmazások használatával kapcsolatban.
-                        </p>
-
-                        <p>
-                            1.6 Ha azt tapasztalja, hogy fiókját vagy Alkalmazásainkat jogosulatlanul használják mások,
-                            azonnal értesítse a VidTakot, hogy elkerülje a szükségtelen veszteségeket. Ha és amennyiben
-                            a vonatkozó jogszabályok lehetővé teszik, jogunkban áll, de nem vagyunk kötelesek (i)
-                            azonosítás vagy más információk megadását kérni Öntől, (ii) ellenőrzéseket végezni, amelyek
-                            segítenek az Ön személyazonosságának vagy hátterének ellenőrzésében, (iii) harmadik fél
-                            adatbázisai vagy más források ellen ellenőrizni Önt, és jelentéseket kérni a
-                            szolgáltatóktól, és (iv) nyilvános büntetőjogi ítéletek vagy szexuális bűnözők
-                            nyilvántartásai vagy azok helyi megfelelői alapján jelentéseket beszerezni.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Felhasználói Tartalom</h2>
-                        <p>
-                            1.1 Az Alkalmazások használatával biztosított, megosztott, beküldött, megjelenített vagy
-                            egyébként létrehozott anyagok Felhasználói Tartalomnak minősülnek. Nem igényelünk
-                            tulajdonjogot az Ön által létrehozott Felhasználói Tartalom felett.
-                        </p>
-
-                        <p>
-                            A VidTak jogosult (de nem köteles) kizárólagos belátása szerint eltávolítani bármely
-                            Felhasználói Tartalmat, amely az Alkalmazásokon keresztül tárolódik. Ha úgy véli, hogy
-                            szerzői jogvédett munkáját oly módon másolták, amely szerzői jogok megsértését jelenti, és
-                            az Alkalmazásokon található, kérjük, értesítsen minket. És a következő információkat írásban
-                            kell megadnia:
-                        </p>
-
-                        <p>
-                            - A szerzői jog tulajdonosának képviseletére jogosult személy elektronikus vagy fizikai
-                            aláírása;
-                        </p>
-
-                        <p>- A szerzői jogvédett munka azonosítása, amelyről azt állítja, hogy megsértették;</p>
-
-                        <p>
-                            - A szerzői jogokat sértő anyag azonosítása, és annak helye az Alkalmazásokon;
-                        </p>
-
-                        <p>
-                            - Olyan információk, amelyek lehetővé teszik a VidTak számára, hogy kapcsolatba lépjen
-                            Önnel, például cím, telefonszám és e-mail cím;
-                        </p>
-
-                        <p>
-                            - Nyilatkozat arról, hogy jóhiszeműen hiszi, hogy az anyag használata a panaszban jelzett
-                            módon nem engedélyezett a szerzői jog tulajdonosának, ügynökének vagy a törvénynek; és
-                        </p>
-
-                        <p>
-                            - Nyilatkozat, amelyet hamis tanúzás büntetése alatt tesz, hogy a fenti információk
-                            pontosak, és hogy Ön a szerzői jog tulajdonosa vagy jogosult a tulajdonos nevében eljárni.
-                        </p>
-
-                        <p>A fenti információkat a következő e-mail címre kell elküldeni: <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a>.</p>
-
-                        <p>
-                            1.2 Ön vállalja, hogy nem tesz közzé, tárol, továbbít, létrehoz vagy oszt meg olyan
-                            Felhasználói Tartalmat, amely: (i) kockázatot jelenthet az Ön, bármely más személy vagy
-                            bármely állat károsodása, vesztesége, fizikai vagy mentális sérülése, érzelmi distressz,
-                            halál, fogyatékosság, eltorzulás vagy fizikai vagy mentális betegsége szempontjából; (ii)
-                            kockázatot jelenthet bármely más veszteség vagy károsodás szempontjából bármely személy vagy
-                            tulajdon számára; (iii) gyermekek károsítására vagy kihasználására irányul, például nem
-                            megfelelő tartalomnak való kitévéssel, személyes azonosításra alkalmas adatok kérésével vagy
-                            egyéb módon; (iv) bűncselekményt vagy jogi károkozást jelenthet vagy hozzájárulhat ahhoz;
-                            (v) olyan információkat vagy tartalmakat tartalmaz, amelyeket törvényellenesnek, károsnak,
-                            visszaélőnek, faji vagy etnikai alapon sértőnek, rágalmazónak, személyes magánélet vagy
-                            nyilvánosság jogainak megsértésének, zaklatónak, más emberek számára megalázónak
-                            (nyilvánosan vagy egyébként), rágalmazónak, fenyegetőnek, trágárnak vagy egyébként
-                            kifogásolhatónak ítélünk; (vi) olyan információkat vagy tartalmakat tartalmaz, amelyek
-                            illegálisak (beleértve, de nem kizárólagosan, a részvényjogi törvények szerinti belső
-                            információk vagy más fél üzleti titkainak közzététele); vagy (vii) olyan információkat vagy
-                            tartalmakat tartalmaz, amelyekhez Önnek nincs joga bármilyen törvény vagy szerződéses vagy
-                            megbízási kapcsolat alapján. Ön vállalja, hogy bármely Felhasználói Tartalom, amelyet
-                            létrehoz, tárol vagy megoszt, nem sérti és nem fogja megsérteni harmadik felek jogait,
-                            beleértve, de nem kizárólagosan, bármilyen Szellemi Tulajdonjogot (ahogyan azt alább
-                            definiáljuk) vagy magánéleti jogokat. A VidTak fenntartja a jogot, de nem köteles,
-                            elutasítani és/vagy eltávolítani bármely Felhasználói Tartalmat, amelyről úgy véli, hogy
-                            megsérti ezeket a rendelkezéseket.
-                        </p>
-
-                        <p>
-                            1.3 A jelen Megállapodás céljaira a Szellemi Tulajdonjogok alatt minden szabadalomjog,
-                            szerzői jog, maszkmunka jog, erkölcsi jog, nyilvánossághoz való jog, védjegy, kereskedelmi
-                            megjelenés és szolgáltatásjegy jog, jó hírnév, üzleti titok jog, és minden egyéb szellemi
-                            tulajdonjog értendő, amelyek most léteznek vagy a jövőben létrejönnek, valamint minden
-                            ezekre vonatkozó kérelmek és nyilvántartások, megújítások és kiterjesztések, bármely állam,
-                            ország, terület vagy más joghatóság törvényei szerint.
-                        </p>
-
-                        <p>1.4 A Felhasználói Tartalommal kapcsolatban Ön kijelenti, képviseli és garantálja a
-                            következőket:</p>
-
-                        <p>
-                            Felhasználói Tartalma és annak használata, ahogyan azt a jelen Megállapodás és az
-                            Alkalmazások előírják, nem sérti semmilyen törvényt vagy harmadik felek jogait, beleértve,
-                            de nem kizárólagosan, semmilyen Szellemi Tulajdonjogot vagy magánéleti jogokat.
-                        </p>
-
-                        <p>
-                            Amennyiben az Alkalmazásokat bármilyen kereskedelmi célra használja, és Felhasználói
-                            Tartalma bármilyen szerzői jogvédett anyagot tartalmaz, amely nem az Ön eredeti munkája vagy
-                            amelyben Ön nem rendelkezik a szerzői joggal, minden szükséges jogot, engedélyt,
-                            beleegyezést és engedélyt megszerezte ahhoz, hogy a szerzői jogvédett anyagot használhassa a
-                            Felhasználói Tartalom létrehozásával és/vagy terjesztésével kapcsolatban az Alkalmazások
-                            használatával.
-                        </p>
-
-                        <p>
-                            1.5 A VidTak a jelen Megállapodásban biztosított jogokat Felhasználói Tartalmára vonatkozóan
-                            bármilyen céh díj, maradék, fizetés, díj vagy jogdíj fizetése nélkül gyakorolhatja, amely
-                            bármilyen kollektív szerződés vagy egyébként fizetendő. A VidTak nem vállal felelősséget és
-                            nem vállal kötelezettséget bármely Felhasználói Tartalomért, amelyet Ön vagy bármely más
-                            felhasználó vagy harmadik fél hoz létre, tárol, megoszt, közzétesz vagy küld az
-                            Alkalmazásokon keresztül. Kizárólag Ön felelős a Felhasználói Tartalmáért és annak
-                            következményeiért, hogy közzéteszi, publikálja vagy megosztja, és Ön vállalja, hogy Mi csak
-                            passzív csatornaként járunk el az Ön online terjesztése és publikálása során. Ha Tartalma
-                            megsérti ezt a Megállapodást, Ön jogilag felelős lehet azért a tartalomért.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Saját Jogaink</h2>
-                        <p>
-                            1.1 Az Alkalmazások a VidTak által birtokolt vagy licencelt anyagokat tartalmaznak (a
-                            továbbiakban együttesen "VidTak IP"). A VidTak IP szerzői jog, védjegy, szabadalom, üzleti
-                            titok és más törvények által védett lehet, és Ön és a VidTak között a VidTak birtokolja és
-                            megtartja minden jogot a VidTak IP felett. Ön nem távolít el, nem módosít és nem rejt el
-                            semmilyen szerzői jogi, védjegy, szolgáltatásjegy vagy egyéb tulajdonjogi megjegyzést, amely
-                            az Alkalmazásokban vagy azokkal együtt található, és nem reprodukálja, módosítja, adaptálja,
-                            származékos műveket készít, előadja, megjeleníti, publikálja, terjeszti, továbbítja,
-                            sugározza, eladja, licenceli vagy egyébként kihasználja az Alkalmazásokat.
-                        </p>
-
-                        <p>
-                            1.2 Az Rposty név és logó a VidTak védjegyei, és nem másolhatók, nem utánozhatók vagy nem
-                            használhatók, egészében vagy részben, a VidTak előzetes írásos engedélye nélkül. Ezenkívül
-                            az oldalfejlécek, egyéni grafikák, gomb ikonok és szkriptek szolgáltatásjegyek, védjegyek
-                            és/vagy kereskedelmi megjelenések a VidTak számára, és nem másolhatók, nem utánozhatók vagy
-                            nem használhatók, egészében vagy részben, a VidTak előzetes írásos engedélye nélkül.
-                        </p>
-
-                        <p>
-                            1.3 Ön dönthet úgy, vagy Mi meghívhatjuk Önt, hogy megjegyzéseket vagy ötleteket küldjön az
-                            Alkalmazásokkal kapcsolatban, beleértve, de nem kizárólagosan, az Alkalmazások
-                            fejlesztésével kapcsolatban (a továbbiakban együttesen "Ötlet"). Bármely Ötlet beküldésével
-                            Ön vállalja, hogy a közzététel ingyenes, nem kért és korlátozás nélküli, és nem helyez a
-                            VidTakot semmilyen megbízási vagy más kötelezettség alá, és hogy szabadon használhatjuk az
-                            Ötletet bármilyen további kompenzáció nélkül Önnek, és/vagy hogy az Ötletet nem bizalmas
-                            alapon vagy egyébként bárkinek közzétehetjük. Ön továbbá tudomásul veszi, hogy a beküldés
-                            elfogadásával a VidTak nem mond le semmilyen jogról, hogy hasonló vagy kapcsolódó ötleteket
-                            használjon, amelyek korábban ismertek voltak a VidTak számára, vagy amelyeket alkalmazottai
-                            fejlesztettek, vagy amelyeket más forrásokból szerzett, mint Ön.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Szolgáltatásaink</h2>
-                        <p>
-                            1.1 A jelen Megállapodásnak megfelelően letöltési szolgáltatásokat és egyéb szolgáltatásokat
-                            nyújtunk Önnek.
-                        </p>
-
-                        <p>
-                            1.2 A Google kapcsolódó szolgáltatásait (például a Google Analytics és a Google Cloud)
-                            fogjuk használni a használat elemzésére és annak biztosítására, hogy megfeleljenek a
-                            feltételeknek és az adatvédelmi irányelveknek.
-                        </p>
-
-                        <p>
-                            Ön és a Google engedélye nélkül nem gyűjtünk és nem dolgozunk fel személyes információkat a
-                            Google szolgáltatásokon keresztül. További információkért tekintse meg a "Hogyan használja a
-                            Google az adatokat, amikor partnereink oldalait vagy alkalmazásait használja" című részt (a
-                            <a
-                                href="https://policies.google.com/technologies/partner-sites">www.google.com/policies/privacy/partners/</a>
-                            címen, vagy bármely más URL-címen, amelyet a Google időről időre biztosíthat) a Google és
-                            kapcsolódó összetevőinek adatvédelmi irányelveinek megértéséhez.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Díjak, Fizetés és Számla</h2>
-                        <p>
-                            1.1 NEM számítunk fel díjat az Alkalmazások használatáért, kivéve, ha Ön előfizet tag
-                            szolgáltatásokra a Google Play-en keresztül. Továbbá, hirdetések közzétételével keresünk
-                            bevételt az Admob és az IronSource révén az Alkalmazásainkon.
-                            A szolgáltatási díjak mértékéről kérjük, tekintse meg az Alkalmazásokon megjelenő árakat
-                            vagy küldjön e-mailt a <a href="mailto:legal@vidtak.net">legal@vidtak.net</a> címre.
-                        </p>
-
-                        <p>
-                            KÉRJÜK, VEGYE FIGYELEMBE, hogy ha nincs különleges megállapodásunk ebben a Megállapodásban,
-                            a díjak és fizetés tartalma a Google Play Felhasználási Feltételeinek követelményeinek
-                            megfelelően történik.
-                        </p>
-
-                        <p>
-                            1.2 Kizárólagos belátásunk szerint időről időre bizonyos felhasználóknak kedvezményes
-                            kuponokat kínálhatunk, amelyek különböző összegekhez vezethetnek ugyanazon vagy hasonló
-                            szolgáltatásokért, és Ön vállalja, hogy az ilyen kuponok nem vonatkoznak Önre, hacsak nem
-                            tettük elérhetővé Önnek.
-                        </p>
-
-                        <p>
-                            1.3 Az előfizetés automatikusan megújul, és az előfizetési díjat a választott szolgáltatások
-                            szerint számítjuk fel a próbaidőszak után, hacsak nem mondja le. Az előfizetését bármikor
-                            kezelheti vagy lemondhatja az Előfizetés menüben a Google Play-en. Az előfizetés
-                            lemondásához kérjük, kapcsolja ki az automatikus megújítást legalább 24 órával az aktuális
-                            előfizetési időszak lejárta előtt. Nem kap visszatérítést az aktuális számlázási időszakra,
-                            kivéve, ha a Google Play Visszatérítési Szabályzata másként nem rendelkezik.
-                        </p>
-
-                        <p>
-                            1.4 KÉRJÜK, VEGYE FIGYELEMBE, hogy fenntartjuk a jogot, hogy további díjakat kérjünk a
-                            Szolgáltatásaink használatából eredő károk miatt.
-                        </p>
-
-                        <p>
-                            1.5 Ön fizetési fiókját összekapcsoljuk személyes fiókjával a Google Play Áruházban. A
-                            VidTak Alkalmazásaival kapcsolatos hibás vagy jogosulatlan fizetési műveletek (beleértve, de
-                            nem kizárólagosan, hibás vagy jogosulatlan levonásokat) esetén a Google Fizetés közvetlen
-                            visszatérítést hajt végre Önnek, és Ön vállalja, hogy engedélyt ad nekünk, hogy
-                            visszatérítési igényt nyújtsunk be az Ön nevében a megfelelő fizetési szolgáltatónál.
-                        </p>
-
-                        <p>
-                            1.6 Időről időre igényelheti a további szolgáltatásainkért fizetett összeg számláját az
-                            Alkalmazásokon keresztül, és Mi a megadott e-mail címre kiállítjuk a megfelelő számlát. Ha
-                            bármilyen kérdése van, kérjük, lépjen kapcsolatba velünk a számlázott Szolgáltatások
-                            befejezését követő 48 órán belül.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Felelősség Korlátozása</h2>
-                        <p>1.1 A vonatkozó jogszabályok által megengedett mértékben nem vagyunk felelősek a
-                            következőkért:</p>
-
-                        <p>
-                            - bármilyen veszteségért, amely nem származhat ésszerűen mulasztásunkból vagy a jelen
-                            Megállapodás megsértéséből;
-                        </p>
-
-                        <p>- bármilyen veszteségért, amely az Ön üzletével vagy bármely harmadik fél üzletével
-                            kapcsolatos;</p>
-
-                        <p>
-                            - bármilyen költségért, díjért, kiadásért, veszteségért, kárért vagy felelősségért, amely
-                            bárki más számára keletkezik a Szolgáltatásaink használatával kapcsolatban.
-                        </p>
-
-                        <p>
-                            1.2 Amennyiben felelősséget vállalunk Önnel szemben a Szolgáltatásokkal kapcsolatban,
-                            felelősségünk a megfelelő Szolgáltatásokért fizetett szolgáltatási díj összegével lesz
-                            korlátozva.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Vita rendezése</h2>
-                        <p>1.1 Barátságos vita rendezése</p>
-
-                        <p>A felhasználók bármilyen vitát a VidTakhoz fordíthatnak, aki megpróbálja barátságosan
-                            rendezni azokat.</p>
-
-                        <p>
-                            Míg a felhasználók jogi lépésekre vonatkozó joga mindig érintetlen marad, az Alkalmazások
-                            vagy a Szolgáltatások használatával kapcsolatos bármilyen vita esetén a felhasználókat
-                            kérjük, hogy lépjenek kapcsolatba a VidTakkal a jelen Megállapodásban megadott
-                            elérhetőségeken.
-                        </p>
-
-                        <p>
-                            A felhasználók benyújthatják panaszukat, beleértve a rövid leírást és ha alkalmazható, a
-                            kapcsolódó rendelés, vásárlás vagy fiók részleteit, a VidTaknak a <a
-                                href="mailto:legal@vidtak.net">legal@vidtak.net</a> e-mail címen.
-                        </p>
-
-                        <p>21 napon belül, indokolatlan késedelem nélkül feldolgozzuk a panaszt.</p>
-                    </div>
-                </div>
-                <div class="col-md-offset-2 col-md-8 col-sm-12">
-                    <div class="section-title">
-                        <h2>Egyéb rendelkezések</h2>
-                        <p>
-                            1.1 Az Alkalmazások harmadik fél weboldalakat vagy weboldal hivatkozásokat tartalmazhatnak,
-                            és Ön dönthet úgy, hogy meglátogatja-e ezeket a hivatkozásokat. Nem vagyunk felelősek ezen
-                            weboldalakon elérhető információk, adatok, vélemények, képek, állítások vagy javaslatok
-                            pontosságáért, teljességéért, megfelelőségéért és megbízhatóságáért. Ha úgy dönt, hogy
-                            meglátogat bármilyen harmadik fél weboldalt, amely az Alkalmazásokhoz kapcsolódik, kizárólag
-                            Ön felelős az ebből eredő lehetséges következményekért és kockázatokért.
-                        </p>
-
-                        <p>
-                            1.2 Ha a jelen Megállapodás bármely rendelkezését illegálisnak, érvénytelennek vagy
-                            végrehajthatatlannak ítélik a vonatkozó jogszabályok szerint, az adott rendelkezés nem
-                            képezi a jelen Megállapodás részét, és nem befolyásolja más rendelkezések jogosságát,
-                            érvényességét és végrehajthatóságát.
-                        </p>
-
-                        <p>
-                            1.3 Ön vállalja, hogy a jelen Megállapodást egészében vagy részben hozzárendelhetjük vagy
-                            átruházhatjuk egy leányvállalatunknak vagy társvállalatunknak, vagy egyesülés vagy
-                            felvásárlás útján létrejött utódunknak.
-                        </p>
-                        <b>
-                            <p>1.4 FELELŐSSÉG VETÉSE</p>
-
-                            <p>
-                                A SZOLGÁLTATÁSOK "JELEN ÁLLAPOTUKBAN" ÉS "ELÉRHETŐSÉGÜKBEN" KERÜLNEK NYÚJTÁSRA. MINDEN
-                                KÉPVISELETT ÉS GARANCIÁT, KIFEJEZETT, BELEÉRTETT VAGY TÖRVÉNYI, AMELY NINCS KIFEJEZETTEN
-                                KIKÖTVE EBBEN A MEGÁLLAPODÁSBAN, ELVETÜNK, BELEÉRTVE A KERESKEDELMI HASZNÁLHATÓSÁGRA,
-                                MEGHATÁROZOTT CÉLRA VALÓ ALKALMASSÁGRA ÉS A JOGOK SÉRTÉSÉNEK HIÁNYÁRA VONATKOZÓ
-                                BELEÉRTETT GARANCIÁKAT. EZENKÍVÜL NEM TESSZÜNK KÉPVISELETT, GARANCIÁT VAGY ÍGÉRETET A
-                                SZOLGÁLTATÁSOK VAGY A SZOLGÁLTATÁSOK HASZNÁLATÁVAL KÉR TÁRSÍTOTT SZOLGÁLTATÁSOK VAGY
-                                ÁRUK MEGBÍZHATÓSÁGÁRA, IDŐBEN TÖRTÉNŐ ELÉRHETŐSÉGÉRE, MINŐSÉGÉRE, ALKALMASSÁGÁRA VAGY
-                                ELÉRHETŐSÉGÉRE VONATKOZÓAN, VAGY ARRA, HOGY A SZOLGÁLTATÁSOK MEGSZAKÍTÁS NÉLKÜL VAGY
-                                HIBA NÉLKÜL FOLYNAK. NEM GARANTÁLJUK A HARMADIK FÉL SZOLGÁLTATÓK MINŐSÉGÉT,
-                                ALKALMASSÁGÁT, BIZTONSÁGÁT VAGY KÉPESSÉGÉT. ÖN ELFOGADJA, HOGY A SZOLGÁLTATÁSOK
-                                HASZNÁLATÁBÓL EREDŐ ÖSSZES KOCKÁZAT KIZÁRÓLAG ÖNRE HARUL, A VONATKOZÓ JOGSZABÁLYOK ÁLTAL
-                                MEGENGEDETT LEGNAGYOBB MÉRTÉKBEN.
-                            </p>
-
-                            <p>1.5 FELELŐSSÉG KORLÁTOZÁSA</p>
-
-                            <p>
-                                NEM VÁLLALUNK FELELŐSSÉGET KÖZVETETT, VÉLETLEN, KÜLÖNLEGES, PÉLDAKÉNT SZOLGÁLÓ, BÜNTETŐ
-                                VAGY KÖVETKEZMÉNYES KÁROKÉRT, BELEÉRTVE ELMARADT NYERESÉGET, ELVESZETT ADATOKAT,
-                                SZEMÉLYI SÉRÜLÉST VAGY ANYAGI KÁRT, AMELY A SZOLGÁLTATÁSOK HASZNÁLATÁVAL KAPCSOLATOS
-                                VAGY EBBŐL EREDŐ, MÉG AKKOR SEM, HA TUDOMÁSUNKRA HOZTÁK AZ ILYEN KÁROK LEHETŐSÉGÉT. NEM
-                                VÁLLALUNK FELELŐSSÉGET SEMMILLYEN KÁRÉRT, FELELŐSSÉGÉRT VAGY VESZTESÉGÉRT, AMELY (i) A
-                                SZOLGÁLTATÁSOK HASZNÁLATÁBÓL VAGY AZOKRA VALÓ TÁMASZKODÁSBÓL, VAGY A SZOLGÁLTATÁSOKHOZ
-                                VALÓ HOZZÁFÉRÉS HIÁNYÁBÓL ERED; VAGY (ii) BÁRMILYEN ÜGYLETBŐL VAGY KAPCSOLATBÓL ERED,
-                                AMELY ÖN ÉS BÁRMELY HARMADIK FÉL SZOLGÁLTATÓ KÖZÖTT LÉTREJÖN, MÉG AKKOR SEM, HA
-                                TUDOMÁSUNKRA HOZTÁK AZ ILYEN KÁROK LEHETŐSÉGÉT. NEM VÁLLALUNK FELELŐSSÉGET KÉSÉSÉRT VAGY
-                                TELJESÍTMÉNYHIÁNYÉRT, AMELY AZ ÉN KONTROLLUNKON KÍVÜLI OKOKBÓL ERED. SEMMI ESETBEN SEM
-                                HALADHATJA MEG A SZOLGÁLTATÁSOKKAL KAPCSOLATOS ÖSSZES KÁRÉRT, VESZTESÉGÉRT ÉS JOGOK
-                                ÉRVÉNYESÍTÉSÉÉRT JÁRÓ FELELŐSSÉGÜNK A MEGFELELŐ SZOLGÁLTATÁSÉRT FELSZÁMÍTOTT
-                                SZOLGÁLTATÁSI DÍJ ÖSSZEGÉT.
-                            </p>
-
-                            <p>
-                                A JELEN FEJEZETBEN FOGLALT KORLÁTOZÁSOK ÉS FELELŐSSÉGVETÉS NEM CÉLJA A FELELŐSSÉG
-                                KORLÁTOZÁSA VAGY AZ ÖN FOGYASZTÓI JOGAINAK MÓDOSÍTÁSA, AMELYEKET A VONATKOZÓ
-                                JOGSZABÁLYOK SZERINT NEM LEHET KIZÁRNI.
-                            </p>
-
-                            <p>1.6 KÁRTÉRÍTÉS</p>
-
-                            <p>
-                                ÖN VÁLLALJA, HOGY KÁRTÉRÍTÉST NYÚJT NEKÜNK ÉS TISZTVISELŐINKNEK, IGAZGATÓINKNAK,
-                                ALKALMAZOTTAINAK, SOFŐRJEINKNEK KÉRÉSRE MINDEN OLYAN IGAZOLÁSSAL, MEGKÖVETELÉSSEL,
-                                KÖLTSÉGGEL, KIADÁSSAL, KÁRRA, FELELŐSSÉGRE, ELJÁRÁSRA VAGY ÍTÉLETRE, AMELY A JELEN
-                                MEGÁLLAPODÁS MEGSÉRTÉSÉBŐL VAGY MEGSZEGÉSÉBŐL, VAGY BÁRMELY HARMADIK FÉL JOGAINAK
-                                MEGSÉRTÉSÉBŐL ERED.
-                            </p>
-                        </b>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Back top -->
-    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-    <!-- SCRIPTS -->
-    <script src="/static/appwebsite/jquery.js"></script>
-    <script src="/static/appwebsite/bootstrap.min.js"></script>
-    <script src="/static/appwebsite/jquery.magnific-popup.min.js"></script>
-    <script src="/static/appwebsite/magnific-popup-options.js"></script>
-    <script src="/static/appwebsite/owl.carousel.min.js"></script>
-    <script src="/static/appwebsite/smoothscroll.js"></script>
-    <script src="/static/appwebsite/wow.min.js"></script>
-    <script src="/static/appwebsite/custom.js"></script>
-</body>
-
+    <noscript><p class="noscript">JavaScript is required to display this policy.</p></noscript>
+    <script src="/static/appwebsite/vue.js"></script>
+    <script src="/static/appwebsite/vue-i18n.js"></script>
+    <script src="/static/legal-i18n/navigation.js"></script>
+    <script src="/static/legal-i18n/catalogs/insmate-lite-terms.js"></script>
+    <script src="/static/legal-i18n/legal-app.js"></script>
+  </body>
 </html>
