@@ -87,10 +87,11 @@
   }
 
   function getLocale() {
-    // An Android WebView's own locale is authoritative and needs no JS bridge.
-    if (isAndroidWebView()) return readNavigatorLocale()
     var explicitLocale = normalizeLocale(readQuery(['lang', 'locale', 'language']))
     if (explicitLocale) return explicitLocale
+    // Follow the Android WebView locale by default, while allowing an explicit
+    // language selection in the URL to override it.
+    if (isAndroidWebView()) return readNavigatorLocale()
     return isChromeBrowser() ? readNavigatorLocale() : null
   }
 
