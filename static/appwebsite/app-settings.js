@@ -27,7 +27,12 @@
 
   function isAndroidWebView() {
     var userAgent = global.navigator && global.navigator.userAgent ? global.navigator.userAgent : ''
-    return /Android/i.test(userAgent)
+    return /Android/i.test(userAgent) && (/;\s*wv\)/i.test(userAgent) || /\bwv\b/i.test(userAgent) || /Version\/4\.0/i.test(userAgent))
+  }
+
+  function isChromeBrowser() {
+    var userAgent = global.navigator && global.navigator.userAgent ? global.navigator.userAgent : ''
+    return /(?:Chrome|CriOS)\//i.test(userAgent) && !/(?:Edg|OPR)\//i.test(userAgent)
   }
 
   function normalizeLocale(value) {
@@ -84,7 +89,9 @@
   function getLocale() {
     // An Android WebView's own locale is authoritative and needs no JS bridge.
     if (isAndroidWebView()) return readNavigatorLocale()
-    return normalizeLocale(readQuery(['lang', 'locale', 'language']))
+    var explicitLocale = normalizeLocale(readQuery(['lang', 'locale', 'language']))
+    if (explicitLocale) return explicitLocale
+    return isChromeBrowser() ? readNavigatorLocale() : null
   }
 
   function getTheme() {
@@ -123,6 +130,7 @@
     getTheme: getTheme,
     applyTheme: applyTheme,
     isAndroidWebView: isAndroidWebView,
+    isChromeBrowser: isChromeBrowser,
     normalizeLocale: normalizeLocale,
     normalizeTheme: normalizeTheme,
     subscribe: subscribe,

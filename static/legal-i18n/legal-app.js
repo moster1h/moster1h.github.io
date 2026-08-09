@@ -112,10 +112,13 @@
         current.searchParams.forEach(function (value, key) {
           target.searchParams.append(key, value)
         })
-        target.searchParams.delete('locale')
-        target.searchParams.delete('language')
-        target.searchParams.delete('appLanguage')
-        target.searchParams.set('lang', this.locale)
+        var hasExplicitLocale = current.searchParams.has('lang') || current.searchParams.has('locale') || current.searchParams.has('language')
+        if (hasExplicitLocale) {
+          target.searchParams.delete('locale')
+          target.searchParams.delete('language')
+          target.searchParams.delete('appLanguage')
+          target.searchParams.set('lang', this.locale)
+        }
         return target.pathname + target.search
       },
       themeLabel: function () {
