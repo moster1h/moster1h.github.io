@@ -8,7 +8,31 @@
   var appName = body.getAttribute('data-app-name')
   var initialLocale = body.getAttribute('data-locale') || 'en'
   var documentFile = body.getAttribute('data-document')
+  var appSettings = window.VidTakAppSettings || null
   var applicationTheme = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null
+
+  function legalHref(locale, file, setLocaleQuery) {
+    var target = new URL('/' + appDirectory + '/' + locale + '/' + file, window.location.origin)
+    var current = new URL(window.location.href)
+    current.searchParams.forEach(function (value, key) {
+      target.searchParams.append(key, value)
+    })
+    target.hash = current.hash
+
+    if (setLocaleQuery) {
+      target.searchParams.delete('locale')
+      target.searchParams.delete('language')
+      target.searchParams.delete('appLanguage')
+      target.searchParams.set('lang', locale)
+    }
+    return target.pathname + target.search + target.hash
+  }
+
+  var applicationLocale = appSettings && appSettings.getLocale()
+  if (applicationLocale && catalog[applicationLocale] && applicationLocale !== initialLocale) {
+    window.location.replace(legalHref(applicationLocale, documentFile, false))
+    return
+  }
 
   var uiMessages = {
     en: { language: 'Language', documents: 'Legal documents', fallback: 'This translation is not available yet. The English source is displayed.' },
@@ -65,6 +89,7 @@
         documentFile: documentFile,
         locales: navigation.locales || [],
         theme: document.documentElement.dataset.theme || 'light',
+        unsubscribeApplicationSettings: null,
       }
     },
     computed: {
@@ -81,6 +106,18 @@
       fallbackNotice: function () {
         return this.ui.fallback
       },
+      homeLink: function () {
+        var target = new URL('/', window.location.origin)
+        var current = new URL(window.location.href)
+        current.searchParams.forEach(function (value, key) {
+          target.searchParams.append(key, value)
+        })
+        target.searchParams.delete('locale')
+        target.searchParams.delete('language')
+        target.searchParams.delete('appLanguage')
+        target.searchParams.set('lang', this.locale)
+        return target.pathname + target.search
+      },
       themeLabel: function () {
         if (this.locale === 'cn') return this.theme === 'dark' ? '使用浅色模式' : '使用深色模式'
         if (this.locale === 'tw') return this.theme === 'dark' ? '使用淺色模式' : '使用深色模式'
@@ -94,7 +131,7 @@
           return {
             file: item.file,
             label: labels[item.file] || item.key,
-            href: '/' + directory + '/' + locale + '/' + item.file,
+            href: legalHref(locale, item.file, false),
           }
         })
       },
@@ -114,6 +151,9 @@
         else if (applicationTheme.addListener) applicationTheme.addListener(this.handleApplicationTheme)
       }
       document.addEventListener('visibilitychange', this.syncWithApplicationTheme)
+      if (appSettings && appSettings.subscribe) {
+        this.unsubscribeApplicationSettings = appSettings.subscribe(this.handleApplicationSettings)
+      }
     },
     beforeDestroy: function () {
       if (applicationTheme) {
@@ -121,11 +161,12 @@
         else if (applicationTheme.removeListener) applicationTheme.removeListener(this.handleApplicationTheme)
       }
       document.removeEventListener('visibilitychange', this.syncWithApplicationTheme)
+      if (this.unsubscribeApplicationSettings) this.unsubscribeApplicationSettings()
     },
     methods: {
       changeLocale: function (event) {
         var locale = event.target.value
-        window.location.assign('/' + this.appDirectory + '/' + locale + '/' + this.documentFile)
+        window.location.assign(legalHref(locale, this.documentFile, true))
       },
       toggleTheme: function () {
         this.theme = this.theme === 'dark' ? 'light' : 'dark'
@@ -133,13 +174,27 @@
         document.documentElement.style.colorScheme = this.theme
       },
       handleApplicationTheme: function (event) {
-        this.theme = event.matches ? 'dark' : 'light'
+        this.theme = appSettings ? appSettings.getTheme() : (event.matches ? 'dark' : 'light')
         document.documentElement.dataset.theme = this.theme
         document.documentElement.style.colorScheme = this.theme
       },
+      handleApplicationSettings: function () {
+        var locale = appSettings && appSettings.getLocale()
+        if (locale && catalog[locale] && locale !== this.locale) {
+          window.location.replace(legalHref(locale, this.documentFile, true))
+          return
+        }
+        this.syncWithApplicationTheme()
+      },
       syncWithApplicationTheme: function () {
-        if (document.visibilityState === 'hidden' || !applicationTheme) return
-        this.handleApplicationTheme(applicationTheme)
+        if (document.visibilityState === 'hidden') return
+        if (appSettings) {
+          this.theme = appSettings.getTheme()
+          document.documentElement.dataset.theme = this.theme
+          document.documentElement.style.colorScheme = this.theme
+        } else if (applicationTheme) {
+          this.handleApplicationTheme(applicationTheme)
+        }
       },
     },
   })

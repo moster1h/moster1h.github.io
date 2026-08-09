@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/appwebsite/app-settings.js"></script>
     <script>
       (() => {
         try {
-          const theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-          document.documentElement.dataset.theme = theme
-          document.documentElement.style.colorScheme = theme
+          window.VidTakAppSettings.applyTheme()
         } catch {
           document.documentElement.dataset.theme = 'light'
         }
@@ -29,7 +28,7 @@
   >
     <div id="legal-app" v-cloak>
       <header class="legal-toolbar">
-        <a class="legal-brand" href="/" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
+        <a class="legal-brand" :href="homeLink" aria-label="VidTak Apps">VIDTAK <small>APPS</small></a>
         <nav class="legal-documents" :aria-label="ui.documents">
           <a
             v-for="item in documentLinks"
